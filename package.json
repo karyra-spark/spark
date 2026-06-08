@@ -21,8 +21,9 @@
     "audit:desktop-layout": "node src/scripts/audit-desktop-layout.mjs",
     "audit:beta-signal": "node src/scripts/audit-beta-signal.mjs",
     "audit:code-clean": "node src/scripts/audit-code-cleanliness.mjs",
-    "audit:all": "pnpm run audit:code-clean && pnpm run audit:public-copy && pnpm run audit:microcopy && pnpm run audit:journey-copy && pnpm run audit:learning-flow && pnpm run audit:passport && pnpm run audit:css-syntax && pnpm run audit:hub-topology && pnpm run audit:desktop-layout && pnpm run audit:beta-signal",
-    "audit:public-repo": "node src/scripts/audit-public-repo.mjs"
+    "audit:all": "pnpm run audit:code-clean && pnpm run audit:public-copy && pnpm run audit:microcopy && pnpm run audit:journey-copy && pnpm run audit:learning-flow && pnpm run audit:passport && pnpm run audit:css-syntax && pnpm run audit:hub-topology && pnpm run audit:desktop-layout && pnpm run audit:beta-signal && pnpm run audit:repo-hygiene",
+    "audit:public-repo": "pnpm run audit:repo-hygiene",
+    "audit:repo-hygiene": "node src/scripts/audit-repository-hygiene.mjs"
   },
   "dependencies": {
     "@lucide/svelte": "latest",

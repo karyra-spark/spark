@@ -2,29 +2,49 @@
 node_modules
 /build
 /.svelte-kit
+dist
+coverage
+
+# Environment files
 .env
 .env.*
 !.env.example
-.backup
-dist
-coverage
-package-lock.json
 
 # Local pass/patch artifacts
 pass-*/
 pass-*.zip
 *.patch.tmp
+*.patch
 .pass-backups/
 .backup/
+.backup
 
 # Local helper/scratch files
 helper.txt
 helper-*.txt
 scratch.*
+scratch/
 tmp/
 temp/
 *.log
+*.bak
+*.orig
+*.rej
+*.tmp
+*.swp
+
+# Local screenshots and ad-hoc exports
+*.png.local
+*.jpg.local
+*.jpeg.local
+*.webp.local
+screenshots/
 
 # Package-manager cross-locks
+package-lock.json
 yarn.lock
 bun.lockb
+
+# Editor/OS local state
+.vscode/
+.idea/
