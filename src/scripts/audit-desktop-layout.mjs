@@ -1,9 +1,8 @@
 import { readFileSync, existsSync } from 'node:fs';
 
 const required = [
-  'src/lib/styles/pass-68k-desktop-layout-repair.css',
-  'src/scripts/audit-pass68k-desktop-layout.mjs',
-  'docs/content/pass-68k-desktop-layout-repair.md',
+  'src/lib/styles/desktop-layout.css',
+  'src/scripts/audit-desktop-layout.mjs',
 ];
 
 const blockers = [];
@@ -15,15 +14,15 @@ for (const file of required) {
 
 const layoutPath = 'src/routes/+layout.svelte';
 const pkgPath = 'package.json';
-const cssPath = 'src/lib/styles/pass-68k-desktop-layout-repair.css';
+const cssPath = 'src/lib/styles/desktop-layout.css';
 
 if (existsSync(layoutPath)) {
   const layout = readFileSync(layoutPath, 'utf8');
-  if (!layout.includes("import '$lib/styles/pass-68k-desktop-layout-repair.css';")) {
+  if (!layout.includes("import '$lib/styles/desktop-layout.css';")) {
     blockers.push('Desktop repair stylesheet is not imported in src/routes/+layout.svelte');
   }
-  const repairIndex = layout.indexOf('pass-68k-desktop-layout-repair.css');
-  const priorIndex = layout.indexOf('pass-68e-passport-explainability-preview.css');
+  const repairIndex = layout.indexOf('desktop-layout.css');
+  const priorIndex = layout.indexOf('passport-explainability.css');
   if (priorIndex !== -1 && repairIndex !== -1 && repairIndex < priorIndex) {
     blockers.push('Desktop repair stylesheet must be imported after pass 68 styles so it can safely override desktop layout.');
   }
@@ -33,8 +32,8 @@ if (existsSync(layoutPath)) {
 
 if (existsSync(pkgPath)) {
   const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
-  if (pkg.scripts?.['audit:pass68k'] !== 'node src/scripts/audit-pass68k-desktop-layout.mjs') {
-    blockers.push('package.json is missing script audit:pass68k');
+  if (pkg.scripts?.['audit:desktop-layout'] !== 'node src/scripts/audit-desktop-layout.mjs') {
+    blockers.push('package.json is missing script audit:desktop-layout');
   }
 } else {
   blockers.push('Missing package.json');
@@ -54,12 +53,12 @@ if (existsSync(cssPath)) {
   }
   if (css.includes(':global(')) blockers.push('Do not use Svelte :global(...) syntax inside global CSS files.');
   if (css.includes('font-size:clamp(52px,7.4vw,112px)') || css.includes('clamp(52px, 7.4vw, 112px)')) {
-    blockers.push('Desktop repair CSS must not reintroduce oversized pass 26 hero typography.');
+    blockers.push('Desktop repair CSS must not reintroduce oversized oversized legacy hero typography.');
   }
   if (!css.includes('max-width: 820px !important')) warnings.push('Hero copy max width guard not found; desktop headings may become too wide.');
 }
 
-console.log('Spark Pass 68K desktop layout audit');
+console.log('Spark desktop layout audit');
 console.log('====================================');
 console.log(`Blockers: ${blockers.length}`);
 console.log(`Warnings: ${warnings.length}`);

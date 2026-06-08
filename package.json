@@ -12,14 +12,17 @@
     "lint": "prettier --check . && eslint .",
     "format": "prettier --write .",
     "audit:public-copy": "node src/scripts/audit-public-copy-contract.mjs",
-    "audit:pass68b": "node src/scripts/audit-pass68b-public-microcopy.mjs",
-    "audit:pass68c": "node src/scripts/audit-pass68c-main-journey-copy.mjs",
-    "audit:pass68d": "node src/scripts/audit-pass68d-core-lab-flow.mjs",
-    "audit:pass68e": "node src/scripts/audit-pass68e-passport-explainability.mjs",
-    "audit:pass68e-css": "node src/scripts/audit-pass68e-css-global-pseudo.mjs",
+    "audit:microcopy": "node src/scripts/audit-public-microcopy.mjs",
+    "audit:journey-copy": "node src/scripts/audit-journey-copy.mjs",
+    "audit:learning-flow": "node src/scripts/audit-learning-flow.mjs",
+    "audit:passport": "node src/scripts/audit-passport-explainability.mjs",
+    "audit:css-syntax": "node src/scripts/audit-css-global-selectors.mjs",
     "audit:hub-topology": "node src/scripts/audit-hub-topology.mjs",
-    "audit:pass68k": "node src/scripts/audit-pass68k-desktop-layout.mjs",
-    "audit:pass68l": "node src/scripts/audit-pass68l-beta-signal.mjs"
+    "audit:desktop-layout": "node src/scripts/audit-desktop-layout.mjs",
+    "audit:beta-signal": "node src/scripts/audit-beta-signal.mjs",
+    "audit:code-clean": "node src/scripts/audit-code-cleanliness.mjs",
+    "audit:all": "pnpm run audit:code-clean && pnpm run audit:public-copy && pnpm run audit:microcopy && pnpm run audit:journey-copy && pnpm run audit:learning-flow && pnpm run audit:passport && pnpm run audit:css-syntax && pnpm run audit:hub-topology && pnpm run audit:desktop-layout && pnpm run audit:beta-signal",
+    "audit:public-repo": "node src/scripts/audit-public-repo.mjs"
   },
   "dependencies": {
     "@lucide/svelte": "latest",
@@ -50,5 +53,7 @@
     "typescript": "^6.0.2",
     "typescript-eslint": "^8.58.1",
     "vite": "^8.0.7"
-  }
+  },
+  "packageManager": "pnpm@10.0.0",
+  "description": "Public SvelteKit frontend for Karyra Spark, a local-first Starknet readiness gateway."
 }

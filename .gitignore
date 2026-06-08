@@ -8,5 +8,23 @@ node_modules
 .backup
 dist
 coverage
-pnpm-lock.yaml
 package-lock.json
+
+# Local pass/patch artifacts
+pass-*/
+pass-*.zip
+*.patch.tmp
+.pass-backups/
+.backup/
+
+# Local helper/scratch files
+helper.txt
+helper-*.txt
+scratch.*
+tmp/
+temp/
+*.log
+
+# Package-manager cross-locks
+yarn.lock
+bun.lockb

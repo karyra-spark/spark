@@ -27,7 +27,7 @@ for (const file of walk(stylesRoot)) {
   });
 }
 
-console.log('Spark Pass 68E-A2 CSS global pseudo audit');
+console.log('Spark CSS global selector audit');
 console.log('===========================================');
 console.log(`CSS files scanned: ${walk(stylesRoot).length}`);
 

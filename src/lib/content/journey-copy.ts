@@ -1,4 +1,4 @@
-export const pass68cMainJourneyCopy = {
+export const sparkMainJourneyCopy = {
   home: {
     heroTitle: 'Pahami blockchain sebelum menyentuh wallet — dari dasar, tanpa risiko.',
     primaryCta: 'Mulai dari Lesson Pertama',
@@ -42,7 +42,7 @@ export const pass68cMainJourneyCopy = {
   }
 } as const;
 
-export const pass68cPreferredActionVerbs = [
+export const sparkPreferredActionVerbs = [
   'Mulai',
   'Lanjutkan',
   'Ikuti',

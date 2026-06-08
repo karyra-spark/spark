@@ -182,7 +182,7 @@ for (const file of scriptFiles) {
   }
 }
 
-console.log('Spark Pass 68B public microcopy audit');
+console.log('Spark public microcopy audit');
 console.log('======================================');
 console.log(`Files scanned: ${scanFiles.length}`);
 

@@ -34,9 +34,8 @@ function requireNotIncludes(path, text, label = text) {
 }
 
 requireFile('src/lib/ui/SparkPassportGuestPreview.svelte');
-requireFile('src/lib/styles/pass-68e-passport-explainability-preview.css');
-requireFile('docs/content/pass-68e-passport-explainability-preview.md');
-requireFile('src/scripts/audit-pass68e-passport-explainability.mjs');
+requireFile('src/lib/styles/passport-explainability.css');
+requireFile('src/scripts/audit-passport-explainability.mjs');
 
 checks.push('passport route exposes guest preview');
 requireIncludes('src/routes/passport/+page.svelte', 'SparkPassportGuestPreview', 'guest Passport preview component');
@@ -66,10 +65,10 @@ for (const path of [
   requireNotIncludes(path, 'proof-of-readiness', 'proof-of-readiness public copy');
 }
 
-checks.push('layout imports pass 68e style');
-requireIncludes('src/routes/+layout.svelte', "pass-68e-passport-explainability-preview.css");
+checks.push('layout imports Passport explainability style');
+requireIncludes('src/routes/+layout.svelte', "passport-explainability.css");
 
-console.log('Spark Pass 68E audit');
+console.log('Spark Passport explainability audit');
 console.log('====================');
 for (const check of checks) console.log(`- ${check}`);
 

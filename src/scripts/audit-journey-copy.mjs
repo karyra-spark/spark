@@ -7,7 +7,7 @@ const scanDirs = ['src/routes', 'src/lib/ui', 'src/lib/messaging', 'src/lib/cont
 const textExtensions = new Set(['.svelte', '.ts', '.js', '.mjs']);
 const skipFileFragments = [
   'public-copy-contract.ts',
-  'pass-68c-main-journey-copy.ts',
+  'journey-copy.ts',
   'audit-pass68',
   '.test.',
   '.spec.'
@@ -120,7 +120,7 @@ for (const file of files) {
   }
 }
 
-console.log('Spark Pass 68C main journey copy audit');
+console.log('Spark journey copy audit');
 console.log('========================================');
 console.log(`Files scanned: ${files.length}`);
 
