@@ -1,0 +1,249 @@
+/* Karyra Spark Clean Rebuild Pass 4 — Gateway Surfaces */
+
+.spark-readiness-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.readiness-main {
+  min-height: auto;
+}
+
+.readiness-score {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.readiness-score h3 {
+  margin: 0;
+  font-size: clamp(24px, 2vw, 34px);
+  line-height: 1.05;
+}
+
+.readiness-score p {
+  max-width: 680px;
+}
+
+.readiness-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.spark-lab-console {
+  display: grid;
+  gap: 14px;
+}
+
+.lab-console-head,
+.workshop-top,
+.hub-resource-top,
+.hub-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lab-status,
+.workshop-capacity,
+.risk {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: var(--spark-blue-strong);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.lab-status.done {
+  background: rgba(34,183,122,.14);
+  color: var(--spark-green);
+}
+
+.lab-step-list {
+  display: grid;
+  gap: 7px;
+}
+
+.lab-step-list span {
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(248,251,255,.8);
+  color: var(--spark-muted);
+  font-size: 12px;
+  font-weight: 760;
+}
+
+[data-theme='dark'] .lab-step-list span {
+  background: rgba(255,255,255,.055);
+}
+
+.spark-workshop-board,
+.spark-hub-directory {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.workshop-card,
+.hub-resource-card {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
+.workshop-meta {
+  display: grid;
+  gap: 7px;
+}
+
+.workshop-meta span {
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(248,251,255,.8);
+  color: var(--spark-muted);
+  font-size: 12px;
+  font-weight: 720;
+}
+
+[data-theme='dark'] .workshop-meta span {
+  background: rgba(255,255,255,.055);
+}
+
+.workshop-meter {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(148,163,184,.22);
+  overflow: hidden;
+}
+
+.workshop-meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--spark-blue), var(--spark-orange));
+}
+
+.hub-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.hub-filter-row button {
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid var(--spark-line);
+  border-radius: 999px;
+  background: var(--spark-card);
+  color: var(--spark-muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.hub-filter-row button.active,
+.hub-filter-row button:hover {
+  border-color: rgba(31,117,255,.36);
+  color: var(--spark-blue-strong);
+  box-shadow: 0 10px 22px rgba(31,117,255,.1);
+}
+
+.risk.low {
+  background: rgba(34,183,122,.13);
+  color: var(--spark-green);
+}
+
+.risk.medium {
+  background: rgba(255,128,0,.13);
+  color: var(--spark-orange);
+}
+
+.risk.technical {
+  background: rgba(124,58,237,.13);
+  color: var(--spark-purple);
+}
+
+.hub-gate {
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,128,0,.24);
+  background: rgba(255,247,237,.72);
+}
+
+[data-theme='dark'] .hub-gate {
+  background: rgba(255,128,0,.08);
+}
+
+.hub-gate strong {
+  display: block;
+  color: var(--spark-navy);
+}
+
+[data-theme='dark'] .hub-gate strong {
+  color: #fff;
+}
+
+.hub-gate p {
+  margin: 5px 0 0;
+}
+
+.save-resource {
+  min-height: 42px;
+  padding: 0 13px;
+  border-radius: 15px;
+  border: 1px solid rgba(31,117,255,.22);
+  background: transparent;
+  color: var(--spark-blue-strong);
+  font-weight: 900;
+}
+
+.save-resource.active {
+  border-color: rgba(34,183,122,.28);
+  color: var(--spark-green);
+  background: rgba(34,183,122,.1);
+}
+
+.profile-summary strong {
+  display: block;
+  margin-top: 10px;
+  font-size: clamp(36px, 4vw, 62px);
+  line-height: 1;
+  letter-spacing: -.08em;
+  color: var(--spark-navy);
+  text-transform: capitalize;
+}
+
+[data-theme='dark'] .profile-summary strong {
+  color: #fff;
+}
+
+@media (max-width: 1180px) {
+  .readiness-grid,
+  .spark-workshop-board,
+  .spark-hub-directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .readiness-score,
+  .readiness-grid,
+  .spark-workshop-board,
+  .spark-hub-directory {
+    grid-template-columns: 1fr;
+  }
+
+  .hub-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .save-resource {
+    width: 100%;
+  }
+}

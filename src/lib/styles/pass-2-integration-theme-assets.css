@@ -1,0 +1,201 @@
+/* Karyra Spark Clean Rebuild Pass 2 — Integration, Theme, Assets */
+
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+body {
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.spark-app[data-theme='dark'] .spark-mark,
+:root[data-theme='dark'] .spark-mark {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.14),
+    0 18px 42px rgba(31,117,255,.28);
+}
+
+.spark-brand img {
+  display: block;
+  width: auto;
+  height: 48px;
+  max-width: 188px;
+  object-fit: contain;
+}
+
+.spark-brand.compact img {
+  height: 38px;
+}
+
+.spark-theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 18px;
+  border: 1px solid var(--spark-line);
+  background: rgba(248,251,255,.86);
+}
+
+[data-theme='dark'] .spark-theme-toggle {
+  background: rgba(255,255,255,.06);
+}
+
+.spark-theme-toggle button {
+  min-height: 34px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--spark-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.spark-theme-toggle button.active,
+.spark-theme-toggle button:hover {
+  background: #ffffff;
+  color: var(--spark-blue-strong);
+  box-shadow: 0 8px 18px rgba(5,9,78,.08);
+}
+
+[data-theme='dark'] .spark-theme-toggle button.active,
+[data-theme='dark'] .spark-theme-toggle button:hover {
+  background: rgba(255,255,255,.12);
+  color: #ffffff;
+}
+
+.spark-hero-panel {
+  overflow: hidden;
+}
+
+.spark-hero-visual {
+  position: relative;
+  min-height: 178px;
+  margin-bottom: 18px;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(31,117,255,.18), transparent 38%),
+    radial-gradient(circle at 72% 28%, rgba(255,128,0,.22), transparent 24%),
+    linear-gradient(135deg, rgba(255,255,255,.82), rgba(239,246,255,.88));
+  border: 1px solid rgba(148,163,184,.2);
+}
+
+[data-theme='dark'] .spark-hero-visual {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(31,117,255,.24), transparent 38%),
+    radial-gradient(circle at 72% 28%, rgba(255,128,0,.22), transparent 24%),
+    linear-gradient(135deg, rgba(11,17,55,.88), rgba(5,9,34,.9));
+  border-color: rgba(255,255,255,.1);
+}
+
+.spark-hero-visual .orbit {
+  position: absolute;
+  inset: 26px;
+  border: 1.5px solid rgba(31,117,255,.28);
+  border-radius: 999px;
+  transform: rotate(-18deg);
+}
+
+.spark-hero-visual .orbit-two {
+  inset: 44px 18px;
+  border-color: rgba(255,128,0,.28);
+  transform: rotate(24deg);
+}
+
+.spark-hero-visual .node {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border-radius: 999px;
+  background: var(--spark-blue);
+  box-shadow: 0 0 0 7px rgba(31,117,255,.1);
+}
+
+.spark-hero-visual .node-one {
+  left: 22%;
+  top: 30%;
+}
+
+.spark-hero-visual .node-two {
+  right: 22%;
+  top: 34%;
+  background: var(--spark-orange);
+  box-shadow: 0 0 0 7px rgba(255,128,0,.12);
+}
+
+.spark-hero-visual .node-three {
+  left: 50%;
+  bottom: 20%;
+  background: var(--spark-green);
+  box-shadow: 0 0 0 7px rgba(34,183,122,.12);
+}
+
+.spark-core-glyph {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-size: 42px;
+  text-shadow: 0 14px 38px rgba(5,9,78,.28);
+}
+
+.spark-hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 50%;
+  width: 74px;
+  height: 74px;
+  transform: translate(-50%, -50%);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 68% 30%, var(--spark-orange), transparent 26%),
+    radial-gradient(circle at 40% 60%, var(--spark-blue), transparent 42%),
+    var(--spark-navy);
+  box-shadow: 0 20px 46px rgba(31,117,255,.26);
+}
+
+.spark-topbar-actions {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.spark-sidebar-hub small,
+.spark-card small {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 980px) {
+  .spark-brand img {
+    height: 42px;
+    max-width: 150px;
+  }
+
+  .spark-theme-toggle span,
+  .spark-preview-toggle span {
+    display: none;
+  }
+
+  .spark-theme-toggle button,
+  .spark-preview-toggle button {
+    min-width: 34px;
+    padding: 0 8px;
+  }
+
+  .spark-topbar-actions {
+    gap: 5px;
+  }
+
+  .spark-hero-visual {
+    min-height: 146px;
+  }
+}

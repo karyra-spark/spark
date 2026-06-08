@@ -1,0 +1,215 @@
+/* Karyra Spark Clean Rebuild Pass 20 — Frontend Readiness QA Polish */
+
+.spark-app-flow-checklist,
+.spark-guest-start-panel,
+.fallback-main-card {
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.12), transparent 28%),
+    var(--spark-card);
+}
+
+.flow-checklist-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.flow-checklist-head h2,
+.spark-guest-start-panel h2,
+.fallback-main-card h1 {
+  margin: 6px 0 0;
+  color: var(--spark-navy);
+  font-size: clamp(24px, 2.3vw, 38px);
+  line-height: 1.05;
+  letter-spacing: -.055em;
+}
+
+[data-theme='dark'] .flow-checklist-head h2,
+[data-theme='dark'] .spark-guest-start-panel h2,
+[data-theme='dark'] .fallback-main-card h1 {
+  color: #fff;
+}
+
+.flow-checklist-head p,
+.spark-guest-start-panel p,
+.fallback-main-card p {
+  color: var(--spark-muted);
+  line-height: 1.56;
+  font-weight: 620;
+}
+
+.flow-checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.flow-checklist-grid a {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  min-height: 78px;
+  padding: 12px;
+  border-radius: 20px;
+  border: 1px solid var(--spark-line);
+  background: rgba(255,255,255,.5);
+  box-shadow: 0 10px 24px rgba(34,18,86,.05);
+}
+
+[data-theme='dark'] .flow-checklist-grid a {
+  background: rgba(255,255,255,.045);
+}
+
+.flow-checklist-grid a.done {
+  border-color: rgba(32,201,151,.28);
+}
+
+.flow-checklist-grid a > span {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+  line-height: 0;
+}
+
+.flow-checklist-grid a.done > span {
+  color: var(--spark-green);
+  background: rgba(32,201,151,.13);
+}
+
+.flow-checklist-grid strong,
+.flow-checklist-grid small {
+  display: block;
+}
+
+.flow-checklist-grid strong {
+  color: var(--spark-navy);
+  font-size: 13px;
+}
+
+[data-theme='dark'] .flow-checklist-grid strong {
+  color: #fff;
+}
+
+.flow-checklist-grid small {
+  margin-top: 3px;
+  color: var(--spark-muted);
+  font-size: 11px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.flow-checklist-grid em {
+  color: var(--spark-muted);
+  font-size: 22px;
+  font-style: normal;
+}
+
+.spark-guest-start-panel {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) auto;
+  gap: 15px;
+  align-items: center;
+}
+
+.spark-guest-start-panel > span,
+.fallback-icon {
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 72% 26%, var(--spark-orange), transparent 26%),
+    linear-gradient(135deg, var(--spark-blue), var(--spark-blue-strong));
+  line-height: 0;
+}
+
+.guest-start-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.guest-start-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.spark-app-fallback {
+  min-height: 68vh;
+  display: grid;
+  place-items: center;
+  padding: 28px 0;
+}
+
+.fallback-main-card {
+  width: min(820px, 100%);
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 18px;
+  align-items: start;
+  padding: clamp(20px, 4vw, 38px);
+}
+
+.fallback-main-card h1 {
+  font-size: clamp(36px, 6vw, 72px);
+}
+
+.fallback-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+@media (max-width: 1180px) {
+  .flow-checklist-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .spark-guest-start-panel {
+    grid-template-columns: 48px 1fr;
+  }
+
+  .guest-start-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 980px) {
+  .flow-checklist-head {
+    display: grid;
+  }
+
+  .flow-checklist-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spark-guest-start-panel,
+  .fallback-main-card {
+    grid-template-columns: 1fr;
+  }
+
+  .guest-start-actions .spark-btn,
+  .fallback-action-row .spark-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .spark-app-fallback {
+    min-height: 58vh;
+    place-items: start;
+  }
+}

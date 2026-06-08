@@ -1,0 +1,482 @@
+/* Karyra Spark Clean Rebuild Pass 15 — Public Navigation + Beta Access Shell */
+
+.spark-account-menu {
+  position: relative;
+  display: inline-flex;
+}
+
+.spark-account-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 10px 0 6px;
+  border: 1px solid var(--spark-line);
+  border-radius: 999px;
+  color: var(--spark-navy);
+  background: var(--spark-card);
+  box-shadow: 0 10px 22px rgba(34,18,86,.06);
+}
+
+[data-theme='dark'] .spark-account-trigger {
+  color: #fff;
+}
+
+.spark-account-trigger span,
+.account-menu-head > span,
+.drawer-account-card > span {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 72% 26%, var(--spark-orange), transparent 26%),
+    linear-gradient(135deg, var(--spark-blue), var(--spark-blue-strong));
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.spark-account-trigger strong {
+  max-width: 138px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.account-menu-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  border: 0;
+  background: transparent;
+}
+
+.account-menu-panel {
+  position: absolute;
+  z-index: 90;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(320px, calc(100vw - 28px));
+  padding: 13px;
+  border-radius: 22px;
+  border: 1px solid rgba(108,77,246,.18);
+  background: var(--spark-card);
+  box-shadow: 0 24px 64px rgba(34,18,86,.18);
+}
+
+.account-menu-head {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.account-menu-head > span {
+  width: 42px;
+  height: 42px;
+  font-size: 15px;
+}
+
+.account-menu-head strong,
+.account-menu-head small,
+.drawer-account-card strong,
+.drawer-account-card small {
+  display: block;
+}
+
+.account-menu-head strong,
+.drawer-account-card strong {
+  color: var(--spark-navy);
+  font-size: 14px;
+}
+
+[data-theme='dark'] .account-menu-head strong,
+[data-theme='dark'] .drawer-account-card strong {
+  color: #fff;
+}
+
+.account-menu-head small,
+.drawer-account-card small {
+  margin-top: 3px;
+  color: var(--spark-muted);
+  font-size: 12px;
+  font-weight: 730;
+}
+
+.account-menu-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.account-menu-links {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.account-menu-links a,
+.account-menu-links button,
+.drawer-logout {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 8px;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--spark-muted);
+  text-align: left;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.account-menu-links a:hover,
+.account-menu-links button:hover {
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+}
+
+.drawer-account-card {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 10px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(108,77,246,.16);
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.1), transparent 30%),
+    rgba(255,255,255,.5);
+}
+
+[data-theme='dark'] .drawer-account-card {
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.12), transparent 30%),
+    rgba(255,255,255,.045);
+}
+
+.drawer-account-card > span {
+  width: 42px;
+  height: 42px;
+}
+
+.drawer-logout {
+  width: 100%;
+  grid-template-columns: 38px 1fr;
+  min-height: 54px;
+  padding: 10px;
+  border: 1px solid var(--spark-line);
+  background: var(--spark-card);
+}
+
+.drawer-logout > span {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: var(--spark-orange);
+  background: rgba(255,122,61,.13);
+  line-height: 0;
+}
+
+/* Auth shell */
+
+.spark-auth-shell {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(360px, .72fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.auth-hero-panel,
+.auth-form-card {
+  border: 1px solid rgba(108,77,246,.17);
+  box-shadow: var(--spark-shadow);
+}
+
+.auth-hero-panel {
+  display: grid;
+  align-content: center;
+  gap: 18px;
+  min-height: 640px;
+  padding: 42px;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 76% 10%, rgba(255,122,61,.18), transparent 28%),
+    radial-gradient(circle at 12% 18%, rgba(108,77,246,.2), transparent 34%),
+    var(--spark-card);
+}
+
+.auth-hero-panel h1 {
+  margin: 0;
+  color: var(--spark-navy);
+  font-size: clamp(42px, 5vw, 76px);
+  line-height: .92;
+  letter-spacing: -.085em;
+  font-weight: 950;
+}
+
+[data-theme='dark'] .auth-hero-panel h1 {
+  color: #fff;
+}
+
+.auth-hero-panel p {
+  max-width: 740px;
+  color: var(--spark-muted);
+  line-height: 1.66;
+  font-weight: 630;
+}
+
+.auth-trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.auth-path-list {
+  display: grid;
+  gap: 9px;
+  margin-top: 8px;
+}
+
+.auth-path-list article {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 11px;
+  align-items: center;
+  padding: 12px;
+  border-radius: 20px;
+  border: 1px solid var(--spark-line);
+  background: rgba(255,255,255,.46);
+}
+
+[data-theme='dark'] .auth-path-list article {
+  background: rgba(255,255,255,.045);
+}
+
+.auth-path-list svg {
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 16px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+}
+
+.auth-path-list strong,
+.auth-path-list small {
+  display: block;
+}
+
+.auth-path-list strong {
+  color: var(--spark-navy);
+  font-size: 14px;
+}
+
+[data-theme='dark'] .auth-path-list strong {
+  color: #fff;
+}
+
+.auth-path-list small {
+  color: var(--spark-muted);
+  font-weight: 650;
+}
+
+.auth-form-card {
+  display: grid;
+  gap: 18px;
+  align-content: start;
+  padding: 24px;
+  border-radius: 30px;
+}
+
+.auth-form-head {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.auth-form-head > span {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+  line-height: 0;
+}
+
+.auth-form-head h2 {
+  margin: 0;
+  color: var(--spark-navy);
+  font-size: 28px;
+  line-height: 1.05;
+  letter-spacing: -.055em;
+}
+
+[data-theme='dark'] .auth-form-head h2 {
+  color: #fff;
+}
+
+.auth-form-head p {
+  margin: 5px 0 0;
+  color: var(--spark-muted);
+  line-height: 1.45;
+  font-weight: 630;
+}
+
+.auth-input-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.auth-input-grid label {
+  display: grid;
+  gap: 7px;
+}
+
+.auth-input-grid label span {
+  color: var(--spark-muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.auth-input-grid input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 16px;
+  border: 1px solid var(--spark-line);
+  color: var(--spark-navy);
+  background: rgba(255,255,255,.62);
+  outline: none;
+  font: inherit;
+  font-weight: 650;
+}
+
+[data-theme='dark'] .auth-input-grid input {
+  color: #fff;
+  background: rgba(255,255,255,.055);
+}
+
+.auth-input-grid input:focus {
+  border-color: rgba(108,77,246,.44);
+  box-shadow: 0 0 0 4px rgba(108,77,246,.1);
+}
+
+.auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--spark-muted);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--spark-line);
+}
+
+.example-account-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.example-account-grid button {
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 17px;
+  border: 1px solid var(--spark-line);
+  background: rgba(255,255,255,.5);
+  text-align: left;
+}
+
+[data-theme='dark'] .example-account-grid button {
+  background: rgba(255,255,255,.045);
+}
+
+.example-account-grid button.selected {
+  border-color: rgba(108,77,246,.42);
+  box-shadow: 0 12px 28px rgba(108,77,246,.12);
+}
+
+.example-account-grid strong,
+.example-account-grid span,
+.example-account-grid small {
+  display: block;
+}
+
+.example-account-grid strong {
+  color: var(--spark-navy);
+  font-size: 14px;
+}
+
+[data-theme='dark'] .example-account-grid strong {
+  color: #fff;
+}
+
+.example-account-grid span {
+  color: var(--spark-muted);
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.example-account-grid small {
+  width: fit-content;
+  margin-top: 3px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+  font-weight: 900;
+}
+
+@media (max-width: 1180px) {
+  .spark-auth-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-hero-panel {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 980px) {
+  .auth-hero-panel,
+  .auth-form-card {
+    padding: 18px;
+    border-radius: 24px;
+  }
+
+  .auth-hero-panel h1 {
+    font-size: clamp(36px, 11vw, 52px);
+  }
+
+  .auth-actions .spark-btn,
+  .auth-form-card > .spark-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

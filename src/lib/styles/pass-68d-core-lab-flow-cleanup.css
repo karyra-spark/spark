@@ -1,0 +1,75 @@
+/* Pass 68D — Core & Lab flow cleanup */
+
+.level-exam-gate {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+  padding: clamp(16px, 4vw, 24px);
+  border: 1px solid var(--spark-line);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(31, 117, 255, 0.1), transparent 34%),
+    var(--spark-card);
+  box-shadow: 0 12px 32px rgba(5, 9, 78, 0.07);
+}
+
+.level-exam-gate.locked {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(255, 128, 0, 0.11), transparent 34%),
+    var(--spark-card);
+}
+
+.level-exam-gate > span {
+  width: 44px;
+  height: 44px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 16px;
+  color: var(--spark-blue-strong);
+  background: rgba(31, 117, 255, 0.1);
+}
+
+.level-exam-gate.locked > span {
+  color: #b45309;
+  background: rgba(255, 128, 0, 0.12);
+}
+
+.level-exam-gate h3 {
+  margin: 0;
+  color: var(--spark-navy);
+  font-size: clamp(20px, 4vw, 27px);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.level-exam-gate p {
+  margin: 6px 0 0;
+  color: var(--spark-muted);
+  line-height: 1.55;
+}
+
+.level-exam-gate strong {
+  color: var(--spark-blue-strong);
+}
+
+.level-exam-gate .spark-btn,
+.level-exam-gate [data-spark-button] {
+  white-space: nowrap;
+}
+
+[data-theme='dark'] .level-exam-gate h3 {
+  color: #fff;
+}
+
+@media (max-width: 720px) {
+  .level-exam-gate {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .level-exam-gate .spark-btn,
+  .level-exam-gate [data-spark-button] {
+    grid-column: 2;
+    width: fit-content;
+  }
+}

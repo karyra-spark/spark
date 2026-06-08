@@ -1,0 +1,39 @@
+<script lang="ts">
+  import { page } from '$app/stores';
+  import SparkBrand from './SparkBrand.svelte';
+
+  const publicPaths = ['/', '/help', '/faq', '/about', '/docs', '/terms', '/login', '/register'];
+  const year = new Date().getFullYear();
+  const pathname = $derived($page.url.pathname);
+  const visible = $derived(publicPaths.includes(pathname));
+</script>
+
+{#if visible}
+  <footer
+    class="spark-simple-footer pass35b-simple-footer pass35b4-footer-direct"
+    aria-label="Footer Karyra Spark"
+    style="width:min(980px,calc(100% - 28px));margin:16px auto calc(84px + env(safe-area-inset-bottom,0px));padding:12px 16px 14px;border-radius:24px;display:grid;grid-template-columns:1fr;gap:10px;background:rgba(255,255,255,.7);backdrop-filter:blur(14px);"
+  >
+    <div
+      class="simple-footer-brandline pass35b4-footer-brandline"
+      style="display:grid;grid-template-columns:132px minmax(0,1fr);gap:14px;align-items:center;"
+    >
+      <SparkBrand compact />
+      <p style="margin:0;max-width:58ch;color:var(--spark-muted);font-size:12.75px;line-height:1.42;font-weight:520;letter-spacing:-.01em;">
+        Belajar blockchain dan Starknet dengan ritme aman: paham dulu, praktik pelan-pelan, lalu jelajah ekosistem.
+      </p>
+    </div>
+
+    <nav aria-label="Link bantuan" style="display:flex;flex-wrap:wrap;justify-content:flex-start;gap:16px;padding-top:2px;">
+      <a href="/about" style="font-size:12px;font-weight:650;color:var(--spark-muted);">About</a>
+      <a href="/help" style="font-size:12px;font-weight:650;color:var(--spark-muted);">Help</a>
+      <a href="/faq" style="font-size:12px;font-weight:650;color:var(--spark-muted);">FAQ</a>
+      <a href="/docs" style="font-size:12px;font-weight:650;color:var(--spark-muted);">Docs</a>
+      <a href="/terms" style="font-size:12px;font-weight:650;color:var(--spark-muted);">Terms</a>
+    </nav>
+
+    <small style="color:var(--spark-muted);font-size:10.75px;line-height:1.3;font-weight:430;">
+      © {year} Karyra Spark · Edukasi dan readiness, bukan saran finansial.
+    </small>
+  </footer>
+{/if}

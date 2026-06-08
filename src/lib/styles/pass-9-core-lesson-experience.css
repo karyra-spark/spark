@@ -1,0 +1,342 @@
+/* Karyra Spark Clean Rebuild Pass 9 — Core + Lesson Experience */
+
+.spark-core-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+  gap: 16px;
+}
+
+.core-continue-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: end;
+  min-height: 100%;
+}
+
+.core-continue-card h2 {
+  margin: 8px 0 0;
+  color: var(--spark-navy);
+  font-size: clamp(28px, 2.6vw, 44px);
+  line-height: 1.02;
+  letter-spacing: -.06em;
+}
+
+[data-theme='dark'] .core-continue-card h2 {
+  color: #fff;
+}
+
+.core-continue-card p {
+  max-width: 720px;
+}
+
+.core-continue-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.core-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.core-overview-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+  line-height: 0;
+  margin-bottom: 10px;
+}
+
+.spark-learning-mode-strip {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(360px, 1.1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 18px;
+  border-radius: 28px;
+  border: 1px solid var(--spark-line);
+  background: var(--spark-card);
+  box-shadow: 0 14px 34px rgba(34,18,86,.09);
+}
+
+.spark-learning-mode-strip strong {
+  display: block;
+  color: var(--spark-navy);
+  font-size: 24px;
+  line-height: 1.06;
+  letter-spacing: -.045em;
+}
+
+[data-theme='dark'] .spark-learning-mode-strip strong {
+  color: #fff;
+}
+
+.spark-learning-mode-strip p {
+  margin: 5px 0 0;
+  color: var(--spark-muted);
+  line-height: 1.55;
+  font-weight: 620;
+}
+
+.mode-strip-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mode-strip-actions button {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 10px;
+  align-items: center;
+  min-height: 68px;
+  padding: 10px;
+  border-radius: 18px;
+  border: 1px solid var(--spark-line);
+  background: rgba(255,255,255,.55);
+  color: var(--spark-muted);
+  text-align: left;
+}
+
+[data-theme='dark'] .mode-strip-actions button {
+  background: rgba(255,255,255,.045);
+}
+
+.mode-strip-actions button > svg {
+  width: 36px;
+  height: 36px;
+  padding: 9px;
+  border-radius: 14px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+}
+
+.mode-strip-actions button strong,
+.mode-strip-actions button small {
+  display: block;
+}
+
+.mode-strip-actions button strong {
+  font-size: 14px;
+  letter-spacing: -.02em;
+}
+
+.mode-strip-actions button small {
+  margin-top: 2px;
+  color: var(--spark-muted);
+  font-size: 11px;
+  font-weight: 760;
+}
+
+.mode-strip-actions button.active {
+  border-color: rgba(108,77,246,.38);
+  box-shadow: 0 12px 28px rgba(108,77,246,.12);
+}
+
+.spark-lesson-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 24px;
+}
+
+.lesson-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+  color: var(--spark-muted);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.lesson-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--spark-blue-strong);
+}
+
+.lesson-reading-progress,
+.lesson-progress-bar {
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(108,77,246,.14);
+}
+
+.lesson-reading-progress {
+  margin-top: 16px;
+}
+
+.lesson-reading-progress span,
+.lesson-progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--spark-blue), var(--spark-orange), var(--spark-pink));
+}
+
+.lesson-navigation-card {
+  display: grid;
+  gap: 14px;
+}
+
+.lesson-progress-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.lesson-progress-head strong {
+  color: var(--spark-navy);
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -.055em;
+}
+
+[data-theme='dark'] .lesson-progress-head strong {
+  color: #fff;
+}
+
+.lesson-progress-head small {
+  color: var(--spark-muted);
+  font-size: 12px;
+  font-weight: 780;
+}
+
+.lesson-mini-list {
+  display: grid;
+  gap: 7px;
+  max-height: 260px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.lesson-mini-list a {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 8px;
+  align-items: center;
+  padding: 9px;
+  border-radius: 15px;
+  border: 1px solid transparent;
+  color: var(--spark-muted);
+  background: rgba(255,255,255,.45);
+}
+
+[data-theme='dark'] .lesson-mini-list a {
+  background: rgba(255,255,255,.04);
+}
+
+.lesson-mini-list a > span {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--spark-violet-soft);
+  color: var(--spark-blue-strong);
+  font-size: 11px;
+  font-weight: 950;
+  line-height: 0;
+}
+
+.lesson-mini-list a strong {
+  color: inherit;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 850;
+}
+
+.lesson-mini-list a.active {
+  color: var(--spark-blue-strong);
+  border-color: rgba(108,77,246,.28);
+  box-shadow: 0 10px 22px rgba(108,77,246,.1);
+}
+
+.lesson-mini-list a.complete > span {
+  color: var(--spark-green);
+  background: rgba(32,201,151,.13);
+}
+
+.lesson-nav-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.lesson-nav-actions .spark-btn:only-child {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1180px) {
+  .spark-core-overview,
+  .spark-learning-mode-strip,
+  .spark-lesson-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .core-continue-card {
+    grid-template-columns: 1fr;
+  }
+
+  .core-continue-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 980px) {
+  .spark-core-overview {
+    gap: 10px;
+  }
+
+  .core-overview-grid,
+  .mode-strip-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .core-continue-card h2 {
+    font-size: clamp(25px, 7.8vw, 34px);
+  }
+
+  .spark-learning-mode-strip {
+    padding: 14px;
+    border-radius: 22px;
+    gap: 12px;
+  }
+
+  .spark-learning-mode-strip strong {
+    font-size: 20px;
+  }
+
+  .mode-strip-actions button {
+    min-height: 58px;
+    border-radius: 16px;
+  }
+
+  .spark-lesson-workspace {
+    gap: 14px;
+  }
+
+  .lesson-breadcrumb {
+    margin-bottom: 12px;
+  }
+
+  .lesson-mini-list {
+    max-height: 220px;
+  }
+
+  .lesson-nav-actions {
+    grid-template-columns: 1fr;
+  }
+}

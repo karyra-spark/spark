@@ -1,0 +1,232 @@
+/* Karyra Spark Clean Rebuild Pass 8 — Asset + Navigation + Surface Unification */
+
+.spark-sidebar-nav a span:first-child,
+.spark-sidebar-hub > span:first-child {
+  line-height: 0;
+}
+
+.spark-sidebar-settings {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 12px;
+  border-radius: 17px;
+  border: 1px solid var(--spark-line);
+  background: rgba(255,255,255,.5);
+  color: var(--spark-muted);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+[data-theme='dark'] .spark-sidebar-settings {
+  background: rgba(255,255,255,.045);
+}
+
+.spark-sidebar-settings:hover,
+.spark-sidebar-settings.active {
+  color: var(--spark-blue-strong);
+  border-color: rgba(108,77,246,.28);
+  background: var(--spark-card);
+}
+
+.spark-topbar .spark-icon-btn {
+  text-decoration: none;
+}
+
+.spark-mobile-drawer {
+  gap: 8px;
+}
+
+.drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+.drawer-head button {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--spark-violet-soft);
+  color: var(--spark-blue-strong);
+}
+
+.spark-mobile-drawer a {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.spark-mobile-drawer a > span {
+  width: 36px;
+  height: 36px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+  line-height: 0;
+}
+
+.spark-mobile-drawer a strong,
+.spark-mobile-drawer a small {
+  display: block;
+}
+
+.spark-mobile-drawer a strong {
+  color: var(--spark-navy);
+  font-size: 13px;
+}
+
+[data-theme='dark'] .spark-mobile-drawer a strong {
+  color: #fff;
+}
+
+.spark-mobile-drawer a small {
+  margin-top: 2px;
+  color: var(--spark-muted);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+/* Unified page header */
+
+.spark-page-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, .36fr);
+  gap: 22px;
+  align-items: center;
+  min-height: 330px;
+  padding: 42px;
+  border-radius: 34px;
+  border: 1px solid rgba(108,77,246,.17);
+  background:
+    radial-gradient(circle at 78% 22%, rgba(255, 122, 61, 0.16), transparent 28%),
+    radial-gradient(circle at 60% 58%, rgba(108, 77, 246, 0.15), transparent 36%),
+    linear-gradient(135deg, rgba(255,255,255,.96), rgba(246,241,255,.92));
+  box-shadow: var(--spark-shadow);
+}
+
+[data-theme='dark'] .spark-page-header {
+  background:
+    radial-gradient(circle at 80% 24%, rgba(255, 122, 61, 0.17), transparent 28%),
+    radial-gradient(circle at 62% 56%, rgba(108, 77, 246, 0.22), transparent 36%),
+    linear-gradient(135deg, rgba(24,13,68,.96), rgba(10,6,30,.93));
+}
+
+.spark-page-header.compact {
+  min-height: 250px;
+}
+
+.spark-page-header h1 {
+  margin: 8px 0 0;
+  color: var(--spark-navy);
+  font-size: clamp(42px, 4vw, 68px);
+  line-height: .94;
+  letter-spacing: -.078em;
+  font-weight: 950;
+}
+
+[data-theme='dark'] .spark-page-header h1 {
+  color: #ffffff;
+}
+
+.spark-page-header p {
+  max-width: 720px;
+  color: var(--spark-muted);
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 580;
+}
+
+.spark-page-header-visual {
+  padding: 0;
+}
+
+.spark-page-header-visual .spark-hero-visual {
+  min-height: 210px;
+  margin: 0;
+}
+
+/* Unified section header */
+
+.spark-section-head.unified {
+  margin-bottom: 14px;
+}
+
+.spark-section-head.unified p {
+  max-width: 780px;
+  margin: 8px 0 0;
+  color: var(--spark-muted);
+  line-height: 1.6;
+  font-weight: 610;
+}
+
+.surface-grid > * {
+  min-height: 100%;
+}
+
+.profile-mode-surface {
+  margin-top: 18px;
+}
+
+.profile-mode-card {
+  min-height: auto;
+  display: grid;
+  gap: 7px;
+}
+
+.profile-mode-card strong {
+  font-size: clamp(26px, 2.2vw, 38px);
+  line-height: 1;
+}
+
+/* Asset fallback polish */
+
+.spark-brand img {
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+@media (max-width: 980px) {
+  .spark-page-header {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    gap: 14px;
+    padding: 22px 16px;
+    border-radius: 24px;
+  }
+
+  .spark-page-header.compact {
+    min-height: auto;
+  }
+
+  .spark-page-header h1 {
+    font-size: clamp(31px, 9.5vw, 42px);
+    line-height: .97;
+  }
+
+  .spark-page-header p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .spark-page-header-visual .spark-hero-visual {
+    min-height: 116px;
+  }
+
+  .spark-section-head.unified p {
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+
+  .spark-sidebar-settings {
+    display: none;
+  }
+}

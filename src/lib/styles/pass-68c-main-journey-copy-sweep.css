@@ -1,0 +1,17 @@
+/* Pass 68C — small public journey copy polish helpers. */
+.pass68c-next-action,
+.pass68c-journey-note {
+  letter-spacing: -0.01em;
+}
+
+.pass68c-journey-note {
+  color: var(--spark-muted);
+  line-height: 1.55;
+}
+
+.pass68c-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}

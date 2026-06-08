@@ -1,0 +1,16 @@
+/* Karyra Spark Clean Rebuild Pass 17 — App Navigation Flow Polish */
+
+.spark-bottom-nav a[href="/dashboard"].active svg,
+.spark-bottom-nav a[href="/dashboard"].active span {
+  color: var(--spark-blue-strong);
+}
+
+.auth-path-list {
+  gap: 8px;
+}
+
+@media (min-width: 981px) {
+  .auth-path-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

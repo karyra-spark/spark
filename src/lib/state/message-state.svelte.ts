@@ -1,0 +1,12 @@
+import type { SparkMessageKind } from '$lib/messaging/spark-messaging-model';
+import { enqueueSyncEvent } from '$lib/sync/sync-event-queue.svelte';
+const STORAGE_KEY = 'karyra-spark-message-state-v1';
+export const messageState = $state({ ready:false, readNotificationIds: [] as string[], readMessageIds: [] as string[], savedMessageIds: [] as string[], activeMessageFilter: 'semua' as SparkMessageKind });
+export function restoreMessageState() { if (typeof window==='undefined') return; try { const raw=window.localStorage.getItem(STORAGE_KEY); if(raw){ const s=JSON.parse(raw) as Partial<typeof messageState>; if(Array.isArray(s.readNotificationIds)) messageState.readNotificationIds=s.readNotificationIds; if(Array.isArray(s.readMessageIds)) messageState.readMessageIds=s.readMessageIds; if(Array.isArray(s.savedMessageIds)) messageState.savedMessageIds=s.savedMessageIds; if(s.activeMessageFilter) messageState.activeMessageFilter=s.activeMessageFilter; } } catch {} messageState.ready=true; }
+export function saveMessageState() { if (typeof window==='undefined') return; window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ readNotificationIds:messageState.readNotificationIds, readMessageIds:messageState.readMessageIds, savedMessageIds:messageState.savedMessageIds, activeMessageFilter:messageState.activeMessageFilter })); }
+export function markNotificationRead(id:string){ if(!messageState.readNotificationIds.includes(id)) messageState.readNotificationIds=[...messageState.readNotificationIds,id]; enqueueSyncEvent({ name:'message.notification.read', entity:'message', action:'notification.read', subjectId:id, payload:{ id } }); }
+export function markAllNotificationsRead(ids:string[]){ messageState.readNotificationIds=Array.from(new Set([...messageState.readNotificationIds,...ids])); }
+export function markMessageRead(id:string){ if(!messageState.readMessageIds.includes(id)) messageState.readMessageIds=[...messageState.readMessageIds,id]; enqueueSyncEvent({ name:'message.message.read', entity:'message', action:'message.read', subjectId:id, payload:{ id } }); }
+export function markAllMessagesRead(ids:string[]){ messageState.readMessageIds=Array.from(new Set([...messageState.readMessageIds,...ids])); }
+export function toggleSavedMessage(id:string){ messageState.savedMessageIds = messageState.savedMessageIds.includes(id) ? messageState.savedMessageIds.filter((item)=>item!==id) : [...messageState.savedMessageIds,id]; }
+export function setMessageFilter(filter:SparkMessageKind){ messageState.activeMessageFilter=filter; }

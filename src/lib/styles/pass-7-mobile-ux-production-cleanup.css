@@ -1,0 +1,445 @@
+/* Karyra Spark Clean Rebuild Pass 7 — Mobile UX + Production Cleanup */
+
+.settings-hero {
+  max-width: 860px;
+}
+
+.spark-preference-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 16px;
+}
+
+.preference-card {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding: 20px;
+  border-radius: 28px;
+  border: 1px solid var(--spark-line);
+  background: var(--spark-card);
+  box-shadow: 0 14px 34px rgba(34,18,86,.09);
+}
+
+.preference-card.main {
+  grid-row: span 2;
+}
+
+.preference-card h2 {
+  margin: 0;
+  color: var(--spark-navy);
+  font-size: clamp(24px, 2vw, 34px);
+  line-height: 1.05;
+  letter-spacing: -.055em;
+}
+
+[data-theme='dark'] .preference-card h2 {
+  color: #fff;
+}
+
+.preference-card p {
+  margin: 0;
+  color: var(--spark-muted);
+  line-height: 1.6;
+  font-weight: 620;
+}
+
+.preference-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preference-chip-row button {
+  min-height: 38px;
+  padding: 0 13px;
+  border-radius: 999px;
+  border: 1px solid var(--spark-line);
+  background: rgba(255,255,255,.62);
+  color: var(--spark-muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+[data-theme='dark'] .preference-chip-row button {
+  background: rgba(255,255,255,.055);
+}
+
+.preference-chip-row button.active,
+.preference-chip-row button:hover {
+  color: var(--spark-blue-strong);
+  border-color: rgba(108,77,246,.35);
+  box-shadow: 0 10px 22px rgba(108,77,246,.1);
+}
+
+.preference-card.danger {
+  border-color: rgba(255,122,61,.22);
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.1), transparent 28%),
+    var(--spark-card);
+}
+
+/* Compact onboarding */
+
+.spark-onboarding.complete {
+  padding: 14px 16px;
+  border-radius: 24px;
+}
+
+.onboarding-complete-row,
+.onboarding-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.onboarding-complete-row strong {
+  display: block;
+  margin-top: 3px;
+  color: var(--spark-navy);
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: -.04em;
+}
+
+[data-theme='dark'] .onboarding-complete-row strong {
+  color: #fff;
+}
+
+.onboarding-complete-row p,
+.onboarding-intro p {
+  margin: 4px 0 0;
+}
+
+.spark-onboarding-grid button {
+  min-height: 118px;
+}
+
+/* Density polish */
+
+.spark-card {
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+.spark-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(108,77,246,.26);
+  box-shadow: 0 18px 42px rgba(34,18,86,.11);
+}
+
+.spark-hero-panel strong {
+  overflow-wrap: anywhere;
+}
+
+.profile-summary strong {
+  text-transform: none;
+}
+
+/* Mobile compression */
+
+@media (max-width: 980px) {
+  .spark-main {
+    padding: 12px 12px 96px;
+  }
+
+  .spark-topbar {
+    height: 68px;
+    padding: 10px 12px;
+  }
+
+  .spark-brand img {
+    height: 36px;
+    max-width: 132px;
+  }
+
+  .spark-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 15px;
+  }
+
+  .spark-preview-toggle,
+  .spark-theme-toggle {
+    padding: 3px;
+    border-radius: 15px;
+  }
+
+  .spark-theme-toggle button,
+  .spark-preview-toggle button,
+  .spark-icon-btn {
+    min-height: 30px;
+    min-width: 30px;
+    padding: 0 7px;
+    border-radius: 12px;
+    font-size: 11px;
+  }
+
+  .spark-hero {
+    padding: 22px 16px;
+    border-radius: 24px;
+    gap: 16px;
+  }
+
+  .spark-hero h1,
+  .spark-section h1 {
+    font-size: clamp(31px, 10vw, 42px);
+    line-height: .96;
+    letter-spacing: -.075em;
+  }
+
+  .spark-section h2,
+  .spark-onboarding h2,
+  .journey-head h2,
+  .palette-head h2 {
+    font-size: clamp(25px, 7.8vw, 34px);
+    line-height: 1.02;
+    letter-spacing: -.06em;
+  }
+
+  .spark-hero p,
+  .spark-lead,
+  .journey-head p,
+  .spark-onboarding p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .spark-hero-actions {
+    margin-top: 16px;
+    gap: 8px;
+  }
+
+  .spark-btn {
+    min-height: 42px;
+    padding: 0 14px;
+    border-radius: 14px;
+    font-size: 13px;
+  }
+
+  .spark-section {
+    margin-top: 22px;
+  }
+
+  .spark-section-head {
+    margin-bottom: 12px;
+  }
+
+  .spark-hero-panel {
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .spark-hero-panel strong {
+    font-size: 42px;
+  }
+
+  .spark-hero-visual {
+    min-height: 118px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  .spark-core-glyph {
+    font-size: 30px;
+  }
+
+  .spark-hero-visual::after {
+    width: 58px;
+    height: 58px;
+    border-radius: 20px;
+  }
+
+  .spark-onboarding {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 22px;
+    gap: 12px;
+  }
+
+  .onboarding-intro,
+  .onboarding-complete-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .spark-onboarding-grid {
+    gap: 8px;
+  }
+
+  .spark-onboarding-grid button {
+    min-height: auto;
+    padding: 13px;
+    border-radius: 18px;
+  }
+
+  .spark-onboarding-grid strong {
+    font-size: 15px;
+  }
+
+  .spark-onboarding-grid small {
+    margin-top: 4px;
+    font-size: 12px;
+  }
+
+  .spark-journey-map {
+    padding: 15px;
+    border-radius: 22px;
+  }
+
+  .journey-rail {
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .journey-step {
+    grid-template-columns: 38px 1fr;
+    align-items: center;
+    min-height: auto;
+    padding: 12px;
+    border-radius: 18px;
+  }
+
+  .journey-step span {
+    grid-row: span 2;
+  }
+
+  .journey-step strong {
+    font-size: 15px;
+  }
+
+  .journey-step small {
+    font-size: 12px;
+  }
+
+  .spark-card {
+    min-height: auto;
+    padding: 15px;
+    border-radius: 20px;
+  }
+
+  .spark-card .big {
+    font-size: 34px;
+  }
+
+  .spark-pillar-grid,
+  .spark-card-grid.three,
+  .spark-card-grid.two,
+  .spark-lab-grid,
+  .spark-profile-grid,
+  .spark-mode-grid,
+  .spark-lesson-layout,
+  .spark-preference-panel {
+    gap: 10px;
+  }
+
+  .spark-module {
+    border-radius: 21px;
+  }
+
+  .spark-module-head {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .spark-module-copy strong {
+    font-size: 18px;
+  }
+
+  .spark-module-copy em {
+    font-size: 13px;
+  }
+
+  .spark-module-body {
+    padding: 0 14px 14px;
+  }
+
+  .spark-lesson-row {
+    padding: 12px;
+    border-radius: 17px;
+  }
+
+  .spark-lesson-main {
+    padding: 22px 16px;
+    border-radius: 24px;
+  }
+
+  .spark-lesson-main h1 {
+    font-size: clamp(31px, 9vw, 44px);
+  }
+
+  .lesson-block {
+    margin-top: 20px;
+    padding-top: 18px;
+  }
+
+  .lesson-block p {
+    font-size: 14.5px;
+    line-height: 1.72;
+  }
+
+  .spark-checkpoint {
+    padding: 16px;
+    border-radius: 20px;
+  }
+
+  .spark-checkpoint h2 {
+    font-size: 22px;
+  }
+
+  .spark-learning-toolkit {
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .readiness-score {
+    grid-template-columns: 86px 1fr;
+    gap: 12px;
+  }
+
+  .spark-ring.large {
+    width: 82px;
+    height: 82px;
+    font-size: 21px;
+  }
+
+  .readiness-score h3 {
+    font-size: 21px;
+  }
+
+  .spark-sync-status {
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .preference-card {
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .spark-bottom-nav {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    padding: 6px;
+    border-radius: 22px;
+  }
+
+  .spark-bottom-nav a {
+    min-height: 50px;
+    border-radius: 16px;
+    font-size: 10.5px;
+  }
+
+  .spark-mobile-drawer {
+    top: 78px;
+    border-radius: 22px;
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1260px) {
+  .spark-preference-panel {
+    grid-template-columns: 1fr;
+  }
+}

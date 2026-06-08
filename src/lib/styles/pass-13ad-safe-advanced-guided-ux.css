@@ -1,0 +1,457 @@
+/* Karyra Spark Clean Rebuild Pass 13A+D — Safe Advanced + Guided UX */
+
+.spark-route-progress {
+  position: fixed;
+  z-index: 250;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(108,77,246,.12);
+  pointer-events: none;
+}
+
+.spark-route-progress span {
+  display: block;
+  height: 100%;
+  border-radius: 0 999px 999px 0;
+  background: linear-gradient(90deg, var(--spark-blue), var(--spark-orange), var(--spark-pink));
+  box-shadow: 0 0 18px rgba(108,77,246,.45);
+  transition: width .16s ease;
+}
+
+.spark-guided-tour-lite,
+.spark-wallet-placeholder {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  gap: 15px;
+  align-items: center;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.12), transparent 28%),
+    var(--spark-card);
+}
+
+.spark-guided-tour-lite > span,
+.wallet-placeholder-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 19px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+  line-height: 0;
+}
+
+.spark-guided-tour-lite h3,
+.spark-wallet-placeholder h2,
+.spark-explorer-placeholder h2 {
+  margin: 6px 0 0;
+  color: var(--spark-navy);
+  font-size: clamp(22px, 2vw, 34px);
+  line-height: 1.05;
+  letter-spacing: -.055em;
+}
+
+[data-theme='dark'] .spark-guided-tour-lite h3,
+[data-theme='dark'] .spark-wallet-placeholder h2,
+[data-theme='dark'] .spark-explorer-placeholder h2 {
+  color: #fff;
+}
+
+.spark-guided-tour-lite p,
+.spark-wallet-placeholder p,
+.spark-explorer-placeholder p {
+  margin: 5px 0 0;
+  color: var(--spark-muted);
+  line-height: 1.55;
+  font-weight: 620;
+}
+
+.guide-lite-scrim {
+  position: fixed;
+  z-index: 210;
+  inset: 0;
+  border: 0;
+  background: rgba(8,4,23,.56);
+  backdrop-filter: blur(10px);
+}
+
+.guide-lite-panel {
+  position: fixed;
+  z-index: 220;
+  left: 50%;
+  bottom: 24px;
+  width: min(560px, calc(100vw - 28px));
+  transform: translateX(-50%);
+  border-radius: 30px;
+  border: 1px solid rgba(177,156,255,.28);
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.16), transparent 28%),
+    var(--spark-card);
+  box-shadow: 0 30px 88px rgba(0,0,0,.35);
+  padding: 18px;
+}
+
+.guide-lite-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.guide-lite-head button {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 15px;
+  background: var(--spark-violet-soft);
+  color: var(--spark-blue-strong);
+}
+
+.guide-lite-body {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.guide-lite-icon {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 72% 26%, var(--spark-orange), transparent 26%),
+    linear-gradient(135deg, var(--spark-blue), var(--spark-blue-strong));
+  line-height: 0;
+}
+
+.guide-lite-body h2 {
+  margin: 0;
+  color: var(--spark-navy);
+  font-size: clamp(26px, 5vw, 38px);
+  line-height: 1;
+  letter-spacing: -.065em;
+}
+
+[data-theme='dark'] .guide-lite-body h2 {
+  color: #fff;
+}
+
+.guide-lite-body p {
+  color: var(--spark-muted);
+  line-height: 1.6;
+  font-weight: 630;
+}
+
+.guide-lite-progress {
+  display: flex;
+  gap: 7px;
+}
+
+.guide-lite-progress button {
+  flex: 1;
+  height: 8px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(108,77,246,.15);
+}
+
+.guide-lite-progress button.done,
+.guide-lite-progress button.active {
+  background: linear-gradient(90deg, var(--spark-blue), var(--spark-orange));
+}
+
+.guide-lite-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Passport gauge */
+
+.spark-passport-gauge {
+  position: relative;
+  width: 142px;
+  height: 142px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+.spark-passport-gauge.large {
+  width: 164px;
+  height: 164px;
+}
+
+.spark-passport-gauge svg {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+
+.gauge-track {
+  fill: none;
+  stroke: rgba(108,77,246,.16);
+  stroke-width: 13;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke: url(#sparkGaugeGradient);
+  stroke-width: 13;
+  stroke-linecap: round;
+  transition: stroke-dashoffset .36s ease;
+}
+
+.gauge-core {
+  fill: var(--spark-card);
+  stroke: rgba(108,77,246,.12);
+  stroke-width: 1;
+}
+
+.spark-passport-gauge > div {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.spark-passport-gauge strong {
+  color: var(--spark-navy);
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -.065em;
+}
+
+[data-theme='dark'] .spark-passport-gauge strong {
+  color: #fff;
+}
+
+.spark-passport-gauge span {
+  margin-top: 3px;
+  color: var(--spark-blue-strong);
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.spark-passport-gauge small {
+  margin-top: 2px;
+  max-width: 82px;
+  color: var(--spark-muted);
+  font-size: 9px;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+/* Explorer placeholder */
+
+.spark-explorer-placeholder {
+  display: grid;
+  gap: 18px;
+}
+
+.explorer-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.explorer-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.explorer-status span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255,122,61,.12);
+  color: var(--spark-orange);
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.explorer-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, .38fr);
+  gap: 16px;
+}
+
+.explorer-code {
+  min-height: 360px;
+  margin: 0;
+  overflow: auto;
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid rgba(108,77,246,.22);
+  color: #f6f0ff;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(108,77,246,.16), transparent 28%),
+    #0b071d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+.explorer-side {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 24px;
+  border: 1px solid var(--spark-line);
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.1), transparent 28%),
+    rgba(255,255,255,.48);
+}
+
+[data-theme='dark'] .explorer-side {
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.12), transparent 28%),
+    rgba(255,255,255,.045);
+}
+
+.explorer-side > span {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+  line-height: 0;
+}
+
+.explorer-side h3 {
+  margin: 0;
+  color: var(--spark-navy);
+  font-size: 21px;
+  letter-spacing: -.045em;
+}
+
+[data-theme='dark'] .explorer-side h3 {
+  color: #fff;
+}
+
+.explorer-note-list,
+.wallet-stage-list {
+  display: grid;
+  gap: 8px;
+}
+
+.explorer-note-list article,
+.wallet-stage-list article {
+  padding: 10px;
+  border-radius: 16px;
+  border: 1px solid var(--spark-line);
+  background: rgba(255,255,255,.48);
+}
+
+[data-theme='dark'] .explorer-note-list article,
+[data-theme='dark'] .wallet-stage-list article {
+  background: rgba(255,255,255,.045);
+}
+
+.explorer-note-list strong,
+.explorer-note-list small,
+.wallet-stage-list strong,
+.wallet-stage-list small {
+  display: block;
+}
+
+.explorer-note-list strong,
+.wallet-stage-list strong {
+  color: var(--spark-navy);
+  font-size: 12px;
+}
+
+[data-theme='dark'] .explorer-note-list strong,
+[data-theme='dark'] .wallet-stage-list strong {
+  color: #fff;
+}
+
+.explorer-note-list small,
+.wallet-stage-list small {
+  margin-top: 4px;
+  color: var(--spark-muted);
+  line-height: 1.45;
+  font-weight: 690;
+}
+
+.wallet-placeholder-actions {
+  justify-self: end;
+}
+
+@media (max-width: 1180px) {
+  .explorer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 980px) {
+  .spark-guided-tour-lite,
+  .spark-wallet-placeholder,
+  .explorer-head {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .spark-guided-tour-lite,
+  .spark-wallet-placeholder {
+    display: grid;
+  }
+
+  .wallet-placeholder-actions {
+    justify-self: stretch;
+  }
+
+  .wallet-placeholder-actions .spark-btn,
+  .spark-guided-tour-lite .spark-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .explorer-head {
+    display: grid;
+  }
+
+  .explorer-status {
+    justify-content: flex-start;
+  }
+
+  .explorer-code {
+    min-height: 300px;
+    font-size: 12px;
+  }
+
+  .spark-passport-gauge {
+    width: 106px;
+    height: 106px;
+  }
+
+  .spark-passport-gauge.large {
+    width: 122px;
+    height: 122px;
+  }
+
+  .spark-passport-gauge strong {
+    font-size: 22px;
+  }
+
+  .guide-lite-panel {
+    bottom: 12px;
+    border-radius: 24px;
+    padding: 15px;
+  }
+
+  .guide-lite-actions .spark-btn {
+    flex: 1 1 auto;
+  }
+}

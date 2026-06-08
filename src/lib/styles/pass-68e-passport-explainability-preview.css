@@ -1,0 +1,244 @@
+/* Pass 68E — Passport Explainability Preview */
+.passport-guest-preview-shell,
+.passport-guest-copy,
+.passport-guest-roadmap-card,
+.passport-guest-step-list,
+.passport-explainability-card,
+.passport-explainability-list {
+  display: grid;
+  gap: 14px;
+}
+
+.passport-guest-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+  gap: 16px;
+  align-items: stretch;
+  padding: clamp(18px, 4vw, 36px);
+  border: 1px solid var(--spark-line);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 10% 12%, rgba(31, 117, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 90% 20%, rgba(255, 128, 0, 0.12), transparent 30%),
+    var(--spark-card);
+  box-shadow: 0 16px 44px rgba(5, 9, 78, 0.08);
+}
+
+.passport-guest-copy {
+  align-content: center;
+}
+
+.passport-guest-copy h1,
+.passport-guest-roadmap-card h2,
+.passport-explainability-card h2 {
+  margin: 0;
+  color: var(--spark-navy);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+.passport-guest-copy h1 {
+  max-width: 760px;
+  font-size: clamp(32px, 5vw, 58px);
+}
+
+.passport-guest-roadmap-card h2,
+.passport-explainability-card h2 {
+  font-size: clamp(23px, 3vw, 34px);
+}
+
+.passport-guest-copy p,
+.passport-guest-copy small,
+.passport-guest-value-grid p,
+.passport-guest-roadmap-card p,
+.passport-guest-step-list p,
+.passport-explainability-card p,
+.passport-explainability-item p {
+  margin: 0;
+  color: var(--spark-muted);
+  line-height: 1.62;
+}
+
+.passport-guest-actions,
+.passport-explainability-item footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  align-items: center;
+}
+
+.passport-guest-badge {
+  position: relative;
+  padding: 10px;
+  border: 1px solid var(--spark-line);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.48);
+}
+
+.passport-guest-sample-label {
+  position: absolute;
+  right: 22px;
+  top: 22px;
+  z-index: 2;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(2, 6, 23, 0.28);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.passport-guest-value-grid,
+.passport-explainability-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.passport-guest-value-grid article,
+.passport-guest-roadmap-card,
+.passport-explainability-card,
+.passport-explainability-item {
+  border: 1px solid var(--spark-line);
+  border-radius: 26px;
+  background: var(--spark-card);
+  box-shadow: 0 10px 26px rgba(5, 9, 78, 0.06);
+}
+
+.passport-guest-value-grid article,
+.passport-guest-roadmap-card,
+.passport-explainability-card,
+.passport-explainability-item {
+  padding: 16px;
+}
+
+.passport-guest-value-grid article > span,
+.passport-explainability-item > span {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: var(--spark-blue-strong);
+  background: rgba(31, 117, 255, 0.1);
+}
+
+.passport-guest-value-grid strong,
+.passport-guest-step-list strong,
+.passport-explainability-item strong {
+  color: var(--spark-navy);
+}
+
+.passport-guest-step-list a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--spark-line);
+  border-radius: 20px;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.passport-guest-step-list a > span,
+.passport-explainability-item > span {
+  font-weight: 900;
+}
+
+.passport-guest-step-list a > span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--spark-blue-strong);
+  background: rgba(31, 117, 255, 0.12);
+}
+
+.passport-guest-step-list small,
+.passport-explainability-item small {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--spark-muted);
+  font-size: 11.5px;
+  font-weight: 850;
+}
+
+.passport-explainability-card {
+  margin-top: 4px;
+}
+
+.passport-explainability-item {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.passport-explainability-item.done {
+  border-color: rgba(35, 184, 125, 0.35);
+  background: linear-gradient(180deg, rgba(240, 253, 244, 0.9), var(--spark-card));
+}
+
+.passport-explainability-item.done > span {
+  color: #0d7a4f;
+  background: rgba(35, 184, 125, 0.14);
+}
+
+.passport-explainability-item.pending > span {
+  color: var(--spark-orange-strong, #b45309);
+  background: rgba(255, 128, 0, 0.12);
+}
+
+.passport-explainability-item.optional {
+  border-style: dashed;
+}
+
+.passport-explainability-item footer em {
+  color: var(--spark-muted);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 850;
+}
+
+[data-theme='dark'] .passport-guest-badge,
+[data-theme='dark'] .passport-guest-step-list a {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+[data-theme='dark'] .passport-guest-copy h1,
+[data-theme='dark'] .passport-guest-roadmap-card h2,
+[data-theme='dark'] .passport-explainability-card h2,
+[data-theme='dark'] .passport-guest-value-grid strong,
+[data-theme='dark'] .passport-guest-step-list strong,
+[data-theme='dark'] .passport-explainability-item strong {
+  color: #fff;
+}
+
+@media (max-width: 880px) {
+  .passport-guest-hero,
+  .passport-guest-value-grid,
+  .passport-explainability-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .passport-guest-hero {
+    padding: 16px;
+    border-radius: 24px;
+  }
+
+  .passport-guest-copy h1 {
+    font-size: 32px;
+  }
+
+  .passport-guest-actions,
+  .passport-guest-actions [data-spark-button] {
+    width: 100%;
+  }
+}

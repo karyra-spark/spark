@@ -1,0 +1,10 @@
+{
+  "source": "core-copy-with-spark-fallback",
+  "roles": {
+    "logo-main-light": "/assets/brand/logo-main-light.svg",
+    "logo-main-dark": "/assets/brand/logo-main-dark.svg",
+    "icon-only": "/assets/brand/icon-only.svg",
+    "favicon": "/favicon.svg",
+    "docs-header": "/assets/brand/docs-header-logo.svg"
+  }
+}

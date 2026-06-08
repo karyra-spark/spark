@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="420" viewBox="0 0 1600 420" role="img" aria-label="Karyra Spark">
+  <defs>
+    <radialGradient id="g1" cx="20%" cy="0%" r="70%"><stop offset="0" stop-color="#6c4df6" stop-opacity=".42"/><stop offset="1" stop-color="#160b3f" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g2" cx="82%" cy="18%" r="70%"><stop offset="0" stop-color="#ff7a3d" stop-opacity=".34"/><stop offset="1" stop-color="#160b3f" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1600" height="420" rx="64" fill="#160b3f"/>
+  <rect width="1600" height="420" rx="64" fill="url(#g1)"/>
+  <rect width="1600" height="420" rx="64" fill="url(#g2)"/>
+  <text x="88" y="180" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="76" font-weight="950" fill="#fff" letter-spacing="-4">Karyra Spark</text>
+  <text x="92" y="244" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="30" font-weight="750" fill="#d8ccff">Local Blockchain, Web3 & Starknet Gateway</text>
+  <path d="M1260 94l34 98 98 34-98 34-34 98-34-98-98-34 98-34 34-98z" fill="#ff7a3d" opacity=".92"/>
+  <circle cx="1190" cy="132" r="18" fill="#8f7cff"/>
+  <circle cx="1394" cy="312" r="18" fill="#ff4ecd"/>
+</svg>

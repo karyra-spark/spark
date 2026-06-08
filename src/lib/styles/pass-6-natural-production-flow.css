@@ -1,0 +1,125 @@
+/* Karyra Spark Clean Rebuild Pass 6 — Natural Production Flow */
+
+.spark-sidebar-nav a.active {
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.12), transparent 28%),
+    var(--spark-card);
+  border-color: rgba(108,77,246,.32);
+  box-shadow: 0 16px 32px rgba(108,77,246,.12);
+}
+
+.spark-sidebar-nav a.active span:first-child {
+  color: #fff;
+  background:
+    radial-gradient(circle at 70% 24%, var(--spark-orange), transparent 28%),
+    linear-gradient(135deg, var(--spark-blue), var(--spark-blue-strong));
+}
+
+.spark-bottom-nav a.active {
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+}
+
+.spark-journey-map {
+  padding: 22px;
+  border-radius: 30px;
+  border: 1px solid rgba(108,77,246,.18);
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.11), transparent 28%),
+    var(--spark-card);
+  box-shadow: 0 16px 42px rgba(34,18,86,.1);
+}
+
+.journey-head h2 {
+  margin: 6px 0 0;
+  color: var(--spark-navy);
+  font-size: clamp(28px, 2.5vw, 42px);
+  line-height: 1.04;
+  letter-spacing: -.055em;
+}
+
+.journey-head p {
+  max-width: 760px;
+  color: var(--spark-muted);
+  line-height: 1.6;
+}
+
+.journey-rail {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.journey-step {
+  min-height: 180px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 22px;
+  border: 1px solid var(--spark-line);
+  background: rgba(255,255,255,.58);
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+[data-theme='dark'] .journey-step {
+  background: rgba(255,255,255,.045);
+}
+
+.journey-step:hover {
+  transform: translateY(-2px);
+  border-color: rgba(108,77,246,.32);
+  box-shadow: 0 16px 32px rgba(108,77,246,.12);
+}
+
+.journey-step span {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 950;
+  background:
+    radial-gradient(circle at 72% 26%, var(--spark-orange), transparent 26%),
+    linear-gradient(135deg, var(--spark-blue), var(--spark-blue-strong));
+}
+
+.journey-step strong,
+.journey-step small {
+  display: block;
+}
+
+.journey-step strong {
+  color: var(--spark-navy);
+  font-size: 16px;
+  letter-spacing: -.035em;
+}
+
+[data-theme='dark'] .journey-step strong {
+  color: #ffffff;
+}
+
+.journey-step small {
+  color: var(--spark-muted);
+  line-height: 1.45;
+  font-weight: 650;
+}
+
+@media (max-width: 1260px) {
+  .journey-rail {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .journey-rail {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-step {
+    min-height: auto;
+  }
+}

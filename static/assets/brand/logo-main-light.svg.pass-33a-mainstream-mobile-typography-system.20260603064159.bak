@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="144" viewBox="0 0 520 144" fill="none" role="img" aria-label="Karyra Spark">
+  <defs>
+    <linearGradient id="markA" x1="20" y1="20" x2="116" y2="116" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F75FF"/>
+      <stop offset="0.58" stop-color="#6C4DF6"/>
+      <stop offset="1" stop-color="#FF7A3D"/>
+    </linearGradient>
+    <linearGradient id="sparkA" x1="44" y1="34" x2="92" y2="102" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DCEAFF"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <path d="M68 10C87.5 10 105.3 18.8 117.1 32.7C128.9 46.5 133.7 65 130.2 82.9C126.7 100.9 115.1 116.4 98.6 124.7C82.1 133.1 62.5 133.1 46 124.7C29.5 116.4 17.9 100.9 14.4 82.9C10.9 65 15.7 46.5 27.5 32.7C39.3 18.8 48.5 10 68 10Z" fill="url(#markA)" opacity="0.98"/>
+    <path d="M69 31L78.7 58.6L108 68L78.7 77.4L69 105L59.3 77.4L30 68L59.3 58.6L69 31Z" fill="url(#sparkA)"/>
+    <path d="M99 31L102.9 42.1L115 46L102.9 49.9L99 61L95.1 49.9L83 46L95.1 42.1L99 31Z" fill="#FFFFFF" opacity="0.88"/>
+  </g>
+  <g font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif">
+    <text x="154" y="63" fill="#05094E" font-size="44" font-weight="900" letter-spacing="-2.1">KARYRA</text>
+    <text x="154" y="106" fill="#1F75FF" font-size="42" font-weight="850" letter-spacing="-1.9">SPARK</text>
+    <text x="332" y="106" fill="#64748B" font-size="15" font-weight="650" letter-spacing="0.2">Starknet learning</text>
+  </g>
+</svg>

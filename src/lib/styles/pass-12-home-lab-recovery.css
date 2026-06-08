@@ -1,0 +1,517 @@
+/* Karyra Spark Clean Rebuild Pass 12 — Home + Practice Lab Surface Recovery */
+
+.spark-home-next-action {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.12), transparent 28%),
+    var(--spark-card);
+}
+
+.next-action-main {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 14px;
+  align-items: center;
+}
+
+.next-action-icon,
+.home-feature-icon,
+.lab-position-icon {
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+  line-height: 0;
+}
+
+.next-action-icon.green {
+  color: var(--spark-green);
+  background: rgba(32,201,151,.13);
+}
+
+.next-action-icon.purple {
+  color: var(--spark-purple);
+  background: rgba(124,58,237,.13);
+}
+
+.next-action-icon.orange {
+  color: var(--spark-orange);
+  background: rgba(255,122,61,.13);
+}
+
+.next-action-icon.pink {
+  color: var(--spark-pink);
+  background: rgba(255,78,205,.13);
+}
+
+.spark-home-next-action h2,
+.readiness-map-main h2,
+.spark-lab-position-card h2,
+.spark-lab-progress-card h2 {
+  margin: 6px 0 0;
+  color: var(--spark-navy);
+  font-size: clamp(24px, 2.2vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -.055em;
+}
+
+[data-theme='dark'] .spark-home-next-action h2,
+[data-theme='dark'] .readiness-map-main h2,
+[data-theme='dark'] .spark-lab-position-card h2,
+[data-theme='dark'] .spark-lab-progress-card h2 {
+  color: #fff;
+}
+
+.spark-home-next-action p,
+.readiness-map-main p,
+.spark-lab-position-card p,
+.spark-lab-progress-card p {
+  margin: 5px 0 0;
+  color: var(--spark-muted);
+  line-height: 1.55;
+  font-weight: 620;
+}
+
+.spark-home-readiness-map {
+  display: grid;
+  gap: 12px;
+}
+
+.readiness-map-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, .28fr);
+  gap: 18px;
+  align-items: center;
+}
+
+.readiness-map-bar,
+.lab-progress-bar {
+  height: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(108,77,246,.14);
+  margin-top: 15px;
+}
+
+.readiness-map-bar span,
+.lab-progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--spark-blue), var(--spark-orange), var(--spark-pink));
+}
+
+.readiness-map-main small {
+  display: block;
+  margin-top: 9px;
+  color: var(--spark-muted);
+  font-size: 12px;
+  font-weight: 780;
+}
+
+.readiness-map-score {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.readiness-map-score strong {
+  margin-top: 8px;
+  color: var(--spark-navy);
+  font-size: 18px;
+  letter-spacing: -.035em;
+}
+
+[data-theme='dark'] .readiness-map-score strong {
+  color: #fff;
+}
+
+.readiness-step-row {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0,1fr));
+  gap: 8px;
+}
+
+.readiness-step-row a {
+  display: grid;
+  gap: 7px;
+  justify-items: center;
+  padding: 11px 8px;
+  border-radius: 18px;
+  border: 1px solid var(--spark-line);
+  background: var(--spark-card);
+  color: var(--spark-muted);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.readiness-step-row a span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  line-height: 0;
+  background: var(--spark-violet-soft);
+  color: var(--spark-blue-strong);
+}
+
+.readiness-step-row a.done {
+  color: var(--spark-green);
+  border-color: rgba(32,201,151,.28);
+}
+
+.readiness-step-row a.done span {
+  color: var(--spark-green);
+  background: rgba(32,201,151,.13);
+}
+
+.spark-home-path-grid,
+.spark-home-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+}
+
+.spark-home-feature-grid {
+  grid-template-columns: repeat(4, minmax(0,1fr));
+}
+
+.spark-home-path-grid button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.spark-home-path-grid button .spark-card,
+.spark-home-feature-grid a .spark-card {
+  min-height: 100%;
+}
+
+.spark-home-path-grid button.selected .spark-card {
+  border-color: rgba(108,77,246,.42);
+  box-shadow: 0 16px 36px rgba(108,77,246,.13);
+}
+
+.home-path-main {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.home-path-main > span {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+  line-height: 0;
+}
+
+.home-path-main h3,
+.spark-home-feature-grid h3,
+.spark-home-hub-preview h3 {
+  margin: 0;
+  color: var(--spark-navy);
+  font-size: 18px;
+  line-height: 1.12;
+  letter-spacing: -.035em;
+}
+
+[data-theme='dark'] .home-path-main h3,
+[data-theme='dark'] .spark-home-feature-grid h3,
+[data-theme='dark'] .spark-home-hub-preview h3 {
+  color: #fff;
+}
+
+.home-path-main p,
+.spark-home-feature-grid p,
+.spark-home-hub-preview p {
+  margin: 6px 0 0;
+  color: var(--spark-muted);
+  line-height: 1.5;
+  font-weight: 620;
+}
+
+.home-path-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.home-path-footer em {
+  padding: 6px 9px;
+  border-radius: 999px;
+  background: var(--spark-violet-soft);
+  color: var(--spark-blue-strong);
+  font-style: normal;
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.home-path-footer strong {
+  color: var(--spark-muted);
+  font-size: 22px;
+}
+
+.spark-home-feature-grid .spark-card {
+  display: grid;
+  gap: 11px;
+}
+
+.spark-home-feature-grid em {
+  color: var(--spark-muted);
+  font-size: 24px;
+  font-style: normal;
+}
+
+.spark-home-hub-preview {
+  display: grid;
+  grid-template-columns: 58px minmax(0,1fr) auto;
+  gap: 15px;
+  align-items: center;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.12), transparent 28%),
+    var(--spark-card);
+}
+
+.spark-home-hub-preview > span {
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+  line-height: 0;
+}
+
+.spark-home-hub-preview.unlocked > span {
+  color: var(--spark-green);
+  background: rgba(32,201,151,.13);
+}
+
+/* Lab */
+
+.spark-lab-position-card {
+  display: grid;
+  grid-template-columns: 58px minmax(0,1fr) auto;
+  gap: 16px;
+  align-items: center;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.12), transparent 28%),
+    var(--spark-card);
+}
+
+.spark-lab-progress-card {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(190px,.28fr);
+  gap: 18px;
+  align-items: center;
+}
+
+.lab-progress-score {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.lab-progress-score strong {
+  margin-top: 8px;
+  color: var(--spark-navy);
+  font-size: 18px;
+  letter-spacing: -.035em;
+}
+
+[data-theme='dark'] .lab-progress-score strong {
+  color: #fff;
+}
+
+.spark-lab-principles,
+.spark-practice-proof-roadmap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+}
+
+.spark-lab-principles article {
+  padding: 18px;
+  border-radius: 24px;
+  border: 1px solid var(--spark-line);
+  background: var(--spark-card);
+  box-shadow: 0 12px 28px rgba(34,18,86,.07);
+}
+
+.spark-lab-principles h3,
+.spark-practice-proof-roadmap strong {
+  margin: 0;
+  color: var(--spark-navy);
+  font-size: 18px;
+  line-height: 1.14;
+  letter-spacing: -.035em;
+}
+
+[data-theme='dark'] .spark-lab-principles h3,
+[data-theme='dark'] .spark-practice-proof-roadmap strong {
+  color: #fff;
+}
+
+.spark-lab-principles p,
+.spark-practice-proof-roadmap p {
+  color: var(--spark-muted);
+  line-height: 1.55;
+}
+
+.spark-practice-proof-roadmap {
+  grid-template-columns: repeat(4, minmax(0,1fr));
+}
+
+.spark-practice-proof-roadmap .spark-card {
+  display: grid;
+  gap: 9px;
+}
+
+.spark-practice-proof-roadmap .spark-card > span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+  line-height: 0;
+}
+
+.spark-practice-proof-roadmap em {
+  color: var(--spark-blue-strong);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 950;
+}
+
+.spark-weekly-targets {
+  display: grid;
+  gap: 9px;
+}
+
+.spark-weekly-targets a {
+  display: grid;
+  grid-template-columns: 34px minmax(0,1fr) auto auto;
+  gap: 10px;
+  align-items: center;
+  min-height: 54px;
+  padding: 10px 12px;
+  border-radius: 18px;
+  border: 1px solid var(--spark-line);
+  background: var(--spark-card);
+  box-shadow: 0 10px 24px rgba(34,18,86,.06);
+}
+
+.spark-weekly-targets a > span {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--spark-muted);
+  background: rgba(108,77,246,.08);
+  line-height: 0;
+}
+
+.spark-weekly-targets a.done > span {
+  color: var(--spark-green);
+  background: rgba(32,201,151,.13);
+}
+
+.spark-weekly-targets strong {
+  color: var(--spark-navy);
+  font-size: 13px;
+}
+
+[data-theme='dark'] .spark-weekly-targets strong {
+  color: #fff;
+}
+
+.spark-weekly-targets em,
+.spark-weekly-targets small {
+  color: var(--spark-muted);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 850;
+}
+
+@media (max-width: 1180px) {
+  .spark-home-path-grid,
+  .spark-home-feature-grid,
+  .spark-practice-proof-roadmap {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+
+  .spark-lab-principles,
+  .readiness-step-row {
+    grid-template-columns: repeat(3, minmax(0,1fr));
+  }
+}
+
+@media (max-width: 980px) {
+  .spark-home-next-action,
+  .readiness-map-main,
+  .spark-home-hub-preview,
+  .spark-lab-position-card,
+  .spark-lab-progress-card {
+    grid-template-columns: 1fr;
+  }
+
+  .next-action-main,
+  .home-path-main {
+    grid-template-columns: 44px 1fr;
+  }
+
+  .next-action-icon,
+  .home-feature-icon,
+  .lab-position-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 16px;
+  }
+
+  .readiness-step-row,
+  .spark-home-path-grid,
+  .spark-home-feature-grid,
+  .spark-lab-principles,
+  .spark-practice-proof-roadmap {
+    grid-template-columns: 1fr;
+  }
+
+  .readiness-map-score,
+  .lab-progress-score {
+    justify-items: start;
+    text-align: left;
+  }
+
+  .spark-home-hub-preview > span {
+    width: 48px;
+    height: 48px;
+  }
+
+  .spark-weekly-targets a {
+    grid-template-columns: 30px 1fr;
+  }
+
+  .spark-weekly-targets em,
+  .spark-weekly-targets small {
+    justify-self: start;
+  }
+}

@@ -1,0 +1,407 @@
+/* Karyra Spark Clean Rebuild Pass 5 — Starknet-inspired Theme */
+
+:root {
+  --spark-navy: #160b3f;
+  --spark-blue: #6c4df6;
+  --spark-blue-strong: #4b2fd6;
+  --spark-orange: #ff7a3d;
+  --spark-green: #20c997;
+  --spark-purple: #7c3aed;
+  --spark-pink: #ff4ecd;
+  --spark-ink: #17122c;
+  --spark-muted: #6f6790;
+  --spark-line: rgba(108, 77, 246, 0.18);
+  --spark-card: rgba(255,255,255,0.96);
+  --spark-shadow: 0 22px 60px rgba(34, 18, 86, 0.13);
+  --spark-surface: #f7f3ff;
+  --spark-surface-soft: #fbf8ff;
+  --spark-coral-soft: #fff3ed;
+  --spark-violet-soft: #f0ecff;
+  --spark-font:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+:root[data-theme='dark'],
+.spark-app[data-theme='dark'] {
+  --spark-navy: #f6f0ff;
+  --spark-blue: #8f7cff;
+  --spark-blue-strong: #b19cff;
+  --spark-orange: #ff9d66;
+  --spark-green: #4adeb8;
+  --spark-purple: #a78bfa;
+  --spark-pink: #ff8ae6;
+  --spark-ink: #f6f0ff;
+  --spark-muted: #b9afd8;
+  --spark-line: rgba(177, 156, 255, 0.2);
+  --spark-card: rgba(20, 12, 58, 0.9);
+  --spark-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+  --spark-surface: #0b071d;
+  --spark-surface-soft: #120a32;
+  --spark-coral-soft: rgba(255, 122, 61, 0.1);
+  --spark-violet-soft: rgba(108, 77, 246, 0.12);
+}
+
+html,
+body {
+  font-family: var(--spark-font);
+}
+
+.spark-app {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(108, 77, 246, 0.18), transparent 34%),
+    radial-gradient(circle at 90% 6%, rgba(255, 122, 61, 0.14), transparent 30%),
+    radial-gradient(circle at 52% 110%, rgba(255, 78, 205, 0.08), transparent 34%),
+    linear-gradient(180deg, #f2edff 0%, #fbf8ff 54%, #ffffff 100%);
+}
+
+.spark-app[data-theme='dark'] {
+  background:
+    radial-gradient(circle at 16% 0%, rgba(108, 77, 246, 0.26), transparent 34%),
+    radial-gradient(circle at 86% 8%, rgba(255, 122, 61, 0.18), transparent 28%),
+    radial-gradient(circle at 45% 110%, rgba(255, 78, 205, 0.12), transparent 36%),
+    linear-gradient(180deg, #080417 0%, #10082f 48%, #0b071d 100%);
+}
+
+.spark-topbar {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.88), rgba(250,247,255,.82));
+  border-bottom-color: rgba(108, 77, 246, 0.16);
+}
+
+[data-theme='dark'] .spark-topbar {
+  background:
+    linear-gradient(135deg, rgba(12, 7, 34, .88), rgba(20, 12, 58, .78));
+  border-bottom-color: rgba(177, 156, 255, 0.16);
+}
+
+.spark-brand {
+  color: var(--spark-navy);
+}
+
+.spark-mark {
+  background:
+    radial-gradient(circle at 72% 26%, var(--spark-orange), transparent 25%),
+    radial-gradient(circle at 35% 64%, var(--spark-blue), transparent 42%),
+    linear-gradient(135deg, #2a1268, #140933 72%);
+  box-shadow:
+    0 0 0 1px rgba(108, 77, 246, 0.18),
+    0 16px 34px rgba(108, 77, 246, .28);
+}
+
+.spark-topbar-center,
+.spark-preview-toggle,
+.spark-theme-toggle {
+  background: rgba(255,255,255,.72);
+  border-color: rgba(108, 77, 246, 0.18);
+}
+
+[data-theme='dark'] .spark-topbar-center,
+[data-theme='dark'] .spark-preview-toggle,
+[data-theme='dark'] .spark-theme-toggle {
+  background: rgba(255,255,255,.055);
+  border-color: rgba(177, 156, 255, 0.16);
+}
+
+.spark-preview-toggle button.active,
+.spark-preview-toggle button:hover,
+.spark-theme-toggle button.active,
+.spark-theme-toggle button:hover,
+.spark-icon-btn:hover {
+  color: var(--spark-blue-strong);
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 10px 24px rgba(108, 77, 246, .12);
+}
+
+[data-theme='dark'] .spark-preview-toggle button.active,
+[data-theme='dark'] .spark-preview-toggle button:hover,
+[data-theme='dark'] .spark-theme-toggle button.active,
+[data-theme='dark'] .spark-theme-toggle button:hover,
+[data-theme='dark'] .spark-icon-btn:hover {
+  color: #ffffff;
+  background: rgba(177, 156, 255, 0.16);
+}
+
+.spark-sidebar {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(108, 77, 246, 0.11), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,.66), rgba(251,248,255,.62));
+  border-right-color: rgba(108, 77, 246, 0.16);
+}
+
+[data-theme='dark'] .spark-sidebar {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(108, 77, 246, 0.16), transparent 34%),
+    linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.025));
+}
+
+.spark-sidebar-nav span:first-child,
+.spark-lesson-icon,
+.spark-module-level {
+  color: var(--spark-blue-strong);
+  background:
+    radial-gradient(circle at 70% 30%, rgba(255, 122, 61, .13), transparent 28%),
+    var(--spark-violet-soft);
+}
+
+.spark-sidebar-nav a:hover,
+.spark-sidebar-status,
+.spark-sidebar-hub,
+.spark-card,
+.spark-module,
+.spark-lesson-main,
+.spark-learning-toolkit,
+.spark-sync-status {
+  border-color: rgba(108, 77, 246, 0.17);
+}
+
+.spark-hero {
+  background:
+    radial-gradient(circle at 78% 22%, rgba(255, 122, 61, 0.16), transparent 28%),
+    radial-gradient(circle at 60% 58%, rgba(108, 77, 246, 0.15), transparent 36%),
+    radial-gradient(circle at 92% 78%, rgba(255, 78, 205, 0.09), transparent 28%),
+    linear-gradient(135deg, rgba(255,255,255,.96), rgba(246,241,255,.92));
+  border-color: rgba(108, 77, 246, 0.17);
+}
+
+[data-theme='dark'] .spark-hero {
+  background:
+    radial-gradient(circle at 80% 24%, rgba(255, 122, 61, 0.17), transparent 28%),
+    radial-gradient(circle at 62% 56%, rgba(108, 77, 246, 0.22), transparent 36%),
+    radial-gradient(circle at 92% 78%, rgba(255, 78, 205, 0.12), transparent 28%),
+    linear-gradient(135deg, rgba(24,13,68,.96), rgba(10,6,30,.93));
+}
+
+.spark-hero h1,
+.spark-section h1,
+.spark-section h2,
+.spark-onboarding h2,
+.spark-checkpoint h2,
+.spark-lesson-main h1 {
+  color: var(--spark-navy);
+}
+
+.spark-btn.primary {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 122, 61, .38), transparent 30%),
+    linear-gradient(135deg, var(--spark-blue), var(--spark-blue-strong));
+  box-shadow:
+    0 16px 32px rgba(108, 77, 246, .26),
+    0 0 0 1px rgba(255,255,255,.12) inset;
+}
+
+.spark-btn.secondary {
+  color: var(--spark-blue-strong);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.92), rgba(246,241,255,.84));
+  border-color: rgba(108, 77, 246, 0.24);
+}
+
+[data-theme='dark'] .spark-btn.secondary {
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, rgba(177, 156, 255, .13), rgba(255,255,255,.055));
+  border-color: rgba(177, 156, 255, 0.2);
+}
+
+.spark-eyebrow,
+.spark-sidebar-head span,
+.spark-module-copy small,
+.toolkit-glossary summary,
+.text-action {
+  color: var(--spark-blue-strong);
+}
+
+.spark-stat-row span,
+.lesson-meta-row span,
+.lab-status,
+.workshop-capacity {
+  color: var(--spark-blue-strong);
+  background: var(--spark-violet-soft);
+}
+
+.spark-bridge,
+.hub-gate {
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255, 122, 61, 0.13), transparent 26%),
+    var(--spark-coral-soft);
+  border-color: rgba(255, 122, 61, 0.25);
+}
+
+.spark-checkpoint {
+  background:
+    radial-gradient(circle at 92% 0%, rgba(32, 201, 151, .16), transparent 26%),
+    rgba(32, 201, 151, 0.08);
+  border-color: rgba(32, 201, 151, 0.25);
+}
+
+.spark-ring {
+  background:
+    radial-gradient(circle, #fff 0 55%, transparent 56%),
+    conic-gradient(var(--spark-green) calc(var(--value) * 1%), rgba(108, 77, 246, .18) 0);
+  color: #160b3f;
+}
+
+[data-theme='dark'] .spark-ring {
+  background:
+    radial-gradient(circle, #150c3b 0 55%, transparent 56%),
+    conic-gradient(var(--spark-green) calc(var(--value) * 1%), rgba(177, 156, 255, .18) 0);
+  color: #ffffff;
+}
+
+.spark-hero-visual {
+  background:
+    radial-gradient(circle at 52% 50%, rgba(108,77,246,.22), transparent 38%),
+    radial-gradient(circle at 72% 28%, rgba(255,122,61,.24), transparent 24%),
+    radial-gradient(circle at 30% 78%, rgba(255,78,205,.12), transparent 26%),
+    linear-gradient(135deg, rgba(255,255,255,.82), rgba(240,236,255,.9));
+  border-color: rgba(108, 77, 246, 0.18);
+}
+
+[data-theme='dark'] .spark-hero-visual {
+  background:
+    radial-gradient(circle at 52% 50%, rgba(108,77,246,.28), transparent 38%),
+    radial-gradient(circle at 72% 28%, rgba(255,122,61,.22), transparent 24%),
+    radial-gradient(circle at 30% 78%, rgba(255,78,205,.16), transparent 26%),
+    linear-gradient(135deg, rgba(23,13,64,.88), rgba(8,4,23,.92));
+  border-color: rgba(177, 156, 255, 0.16);
+}
+
+.spark-hero-visual .orbit {
+  border-color: rgba(108, 77, 246, .34);
+}
+
+.spark-hero-visual .orbit-two {
+  border-color: rgba(255, 122, 61, .34);
+}
+
+.spark-hero-visual .node-one {
+  background: var(--spark-blue);
+  box-shadow: 0 0 0 7px rgba(108,77,246,.13);
+}
+
+.spark-hero-visual .node-two {
+  background: var(--spark-orange);
+  box-shadow: 0 0 0 7px rgba(255,122,61,.13);
+}
+
+.spark-hero-visual .node-three {
+  background: var(--spark-pink);
+  box-shadow: 0 0 0 7px rgba(255,78,205,.13);
+}
+
+.spark-hero-visual::after {
+  background:
+    radial-gradient(circle at 72% 26%, var(--spark-orange), transparent 25%),
+    radial-gradient(circle at 35% 64%, var(--spark-blue), transparent 42%),
+    linear-gradient(135deg, #2a1268, #140933 72%);
+  box-shadow:
+    0 20px 46px rgba(108, 77, 246, .28),
+    0 0 0 1px rgba(255,255,255,.16) inset;
+}
+
+.workshop-meter span {
+  background: linear-gradient(90deg, var(--spark-blue), var(--spark-orange), var(--spark-pink));
+}
+
+.risk.low {
+  color: var(--spark-green);
+  background: rgba(32,201,151,.13);
+}
+
+.risk.medium {
+  color: var(--spark-orange);
+  background: rgba(255,122,61,.13);
+}
+
+.risk.technical {
+  color: var(--spark-purple);
+  background: rgba(124,58,237,.13);
+}
+
+/* Palette preview */
+
+.spark-palette-preview {
+  padding: 22px;
+  border-radius: 30px;
+  border: 1px solid rgba(108, 77, 246, 0.18);
+  background:
+    radial-gradient(circle at 92% 0%, rgba(255,122,61,.12), transparent 28%),
+    var(--spark-card);
+  box-shadow: 0 16px 42px rgba(34, 18, 86, 0.1);
+}
+
+.palette-head h2 {
+  margin: 6px 0 0;
+  color: var(--spark-navy);
+  font-size: clamp(28px, 2.5vw, 42px);
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+}
+
+.palette-head p {
+  max-width: 760px;
+  color: var(--spark-muted);
+  line-height: 1.6;
+}
+
+.palette-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 12px;
+}
+
+.palette-token {
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px;
+  border-radius: 22px;
+  border: 1px solid var(--spark-line);
+  background: rgba(255,255,255,.58);
+}
+
+[data-theme='dark'] .palette-token {
+  background: rgba(255,255,255,.045);
+}
+
+.palette-swatch {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--light), var(--dark));
+  box-shadow: 0 12px 26px rgba(34,18,86,.16);
+}
+
+.palette-token strong,
+.palette-token small,
+.palette-token p {
+  display: block;
+}
+
+.palette-token strong {
+  color: var(--spark-navy);
+  font-weight: 930;
+}
+
+.palette-token small {
+  margin-top: 3px;
+  color: var(--spark-blue-strong);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.palette-token p {
+  margin: 5px 0 0;
+  color: var(--spark-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+@media (max-width: 980px) {
+  .palette-grid {
+    grid-template-columns: 1fr;
+  }
+}

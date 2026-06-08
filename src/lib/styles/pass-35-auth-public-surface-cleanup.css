@@ -1,0 +1,371 @@
+/* Pass 35 — Auth & Public Surface Cleanup
+   Purpose: remove hardcoded example users from runtime, protect personal pages,
+   and make login/register feel simpler and closer to a real product surface. */
+
+.pass35-auth-shell {
+  align-items: stretch;
+  gap: clamp(18px, 3vw, 30px);
+}
+
+.pass35-auth-intro,
+.pass35-auth-card,
+.pass35-auth-gate > div {
+  border: 1px solid rgba(126, 144, 190, 0.18);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(31, 117, 255, 0.08), transparent 32%),
+    linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,251,255,0.86));
+}
+
+[data-theme='dark'] .pass35-auth-intro,
+[data-theme='dark'] .pass35-auth-card,
+[data-theme='dark'] .pass35-auth-gate > div {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(31, 117, 255, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(10,16,50,0.94), rgba(7,12,38,0.88));
+}
+
+.pass35-auth-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 420px;
+  padding: clamp(24px, 5vw, 46px);
+  border-radius: 34px;
+  box-shadow: 0 18px 48px rgba(5, 9, 78, 0.08);
+}
+
+.pass35-auth-intro h1 {
+  max-width: 760px;
+  font-size: clamp(38px, 5vw, 68px);
+  line-height: 0.98;
+  letter-spacing: -0.07em;
+}
+
+.pass35-auth-intro p {
+  max-width: 620px;
+  font-size: 15.5px;
+  line-height: 1.68;
+  font-weight: 500;
+}
+
+.pass35-auth-trust-row {
+  margin-top: 18px;
+}
+
+.pass35-auth-points {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.pass35-auth-points article {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 18px;
+  border: 1px solid var(--spark-line);
+  background: rgba(255,255,255,0.7);
+}
+
+[data-theme='dark'] .pass35-auth-points article {
+  background: rgba(255,255,255,0.06);
+}
+
+.pass35-auth-points svg {
+  color: var(--spark-blue-strong);
+}
+
+.pass35-auth-points strong {
+  display: block;
+  color: var(--spark-navy);
+  font-size: 13px;
+  letter-spacing: -0.02em;
+  font-weight: 760;
+}
+
+[data-theme='dark'] .pass35-auth-points strong {
+  color: #fff;
+}
+
+.pass35-auth-points small {
+  display: block;
+  margin-top: 2px;
+  color: var(--spark-muted);
+  font-size: 11.5px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.pass35-auth-card {
+  align-self: center;
+  max-width: 450px;
+  width: 100%;
+  min-height: auto;
+  padding: clamp(18px, 3vw, 26px);
+  border-radius: 28px;
+  box-shadow: 0 16px 44px rgba(5, 9, 78, 0.08);
+}
+
+.pass35-auth-head {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.pass35-auth-head > span {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  background: rgba(31, 117, 255, 0.1);
+  color: var(--spark-blue-strong);
+}
+
+.pass35-auth-head h2 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  font-weight: 820;
+}
+
+.pass35-auth-head p {
+  margin: 4px 0 0;
+  color: var(--spark-muted);
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.pass35-form-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 128, 0, 0.26);
+  background: rgba(255, 128, 0, 0.08);
+  color: #9a4a00;
+  font-size: 12.5px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+[data-theme='dark'] .pass35-form-error {
+  color: #ffd3a6;
+}
+
+.pass35-auth-inputs {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.pass35-auth-inputs label span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--spark-muted);
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 640;
+}
+
+.pass35-auth-inputs input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 13px;
+  border-radius: 15px;
+  border: 1px solid var(--spark-line);
+  background: rgba(255,255,255,0.86);
+  color: var(--spark-ink);
+  outline: none;
+  font-size: 14px;
+  font-weight: 520;
+}
+
+[data-theme='dark'] .pass35-auth-inputs input {
+  background: rgba(255,255,255,0.07);
+}
+
+.pass35-auth-inputs input:focus {
+  border-color: rgba(31,117,255,.48);
+  box-shadow: 0 0 0 4px rgba(31,117,255,.11);
+}
+
+.pass35-mode-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.pass35-mode-picker button {
+  min-height: 70px;
+  padding: 10px;
+  text-align: left;
+  border: 1px solid var(--spark-line);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.66);
+  color: var(--spark-muted);
+}
+
+[data-theme='dark'] .pass35-mode-picker button {
+  background: rgba(255,255,255,0.05);
+}
+
+.pass35-mode-picker button.active {
+  border-color: rgba(31,117,255,.44);
+  background: rgba(31,117,255,.09);
+  color: var(--spark-blue-strong);
+}
+
+.pass35-mode-picker strong,
+.pass35-mode-picker small {
+  display: block;
+}
+
+.pass35-mode-picker strong {
+  font-size: 12.5px;
+  letter-spacing: -0.02em;
+  font-weight: 760;
+}
+
+.pass35-mode-picker small {
+  margin-top: 3px;
+  font-size: 11px;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.pass35-auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.pass35-auth-note {
+  margin: 14px 0 0;
+  color: var(--spark-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.pass35-auth-gate {
+  min-height: min(660px, calc(100svh - 140px));
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+}
+
+.pass35-auth-gate > div {
+  width: min(560px, 100%);
+  padding: clamp(24px, 6vw, 44px);
+  border-radius: 32px;
+  text-align: center;
+  box-shadow: 0 18px 54px rgba(5, 9, 78, 0.1);
+}
+
+.pass35-auth-gate > div > span {
+  display: inline-grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  color: var(--spark-blue-strong);
+  background: rgba(31,117,255,.1);
+}
+
+.pass35-auth-gate h1 {
+  margin: 8px 0 0;
+  color: var(--spark-navy);
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.02;
+  letter-spacing: -0.065em;
+  font-weight: 850;
+}
+
+[data-theme='dark'] .pass35-auth-gate h1 {
+  color: #fff;
+}
+
+.pass35-auth-gate p:not(.spark-eyebrow) {
+  max-width: 460px;
+  margin: 12px auto 0;
+  color: var(--spark-muted);
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+.pass35-auth-gate-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+@media (max-width: 920px) {
+  .pass35-auth-shell {
+    grid-template-columns: 1fr !important;
+  }
+
+  .pass35-auth-intro {
+    min-height: auto;
+  }
+
+  .pass35-auth-points {
+    grid-template-columns: 1fr;
+  }
+
+  .pass35-auth-card {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .pass35-auth-intro,
+  .pass35-auth-card,
+  .pass35-auth-gate > div {
+    border-radius: 24px;
+  }
+
+  .pass35-auth-intro h1 {
+    font-size: clamp(32px, 11vw, 44px);
+    letter-spacing: -0.06em;
+  }
+
+  .pass35-auth-intro p,
+  .pass35-auth-gate p:not(.spark-eyebrow) {
+    font-size: 13.5px;
+    line-height: 1.62;
+  }
+
+  .pass35-mode-picker {
+    grid-template-columns: 1fr;
+  }
+
+  .pass35-mode-picker button {
+    min-height: 56px;
+  }
+
+  .pass35-auth-actions,
+  .pass35-auth-gate-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .pass35-auth-actions .spark-btn,
+  .pass35-auth-gate-actions .spark-btn {
+    width: 100%;
+  }
+}
