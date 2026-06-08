@@ -48,3 +48,7 @@ bun.lockb
 # Editor/OS local state
 .vscode/
 .idea/
+
+# Internal pass, repair, and temporary artifacts
+.karyra-pass-backups/
+npm-shrinkwrap.json

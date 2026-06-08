@@ -87,7 +87,7 @@
     } catch (error) {
       pushToast({
         title: 'Belum bisa menyimpan',
-        copy: error instanceof Error ? error.message : 'Aktifkan SPARK_STUDIO_WRITE_ENABLED=true untuk menulis file.',
+        copy: error instanceof Error ? error.message : 'Mode tulis Studio dinonaktifkan di repo publik.',
         tone: 'warning'
       });
     } finally {
@@ -161,7 +161,7 @@
   }
 </script>
 
-<section class="content-builder-shell" data-karyra-studio-content-builder="pass67">
+<section class="content-builder-shell" data-karyra-studio-content-builder="public-content-builder">
   <section class="content-builder-hero">
     <div>
       <span class="spark-eyebrow">Spark Studio</span>
@@ -171,12 +171,12 @@
         elemen itu tidak dirender sehingga tidak menyisakan ruang kosong.
       </p>
       <div class="builder-actions">
-        <SparkButton onclick={saveToFile} disabled={!writeEnabled || saving}>{saving ? 'Menyimpan...' : dirty ? 'Simpan ke file' : 'Tersimpan'}</SparkButton>
+        <SparkButton onclick={saveToFile} disabled={!writeEnabled || saving}>{saving ? 'Menyimpan...' : writeEnabled ? (dirty ? 'Simpan ke file' : 'Tersimpan') : 'Mode baca-saja'}</SparkButton>
         <SparkButton variant="secondary" onclick={exportJson}>Salin JSON</SparkButton>
         <SparkButton variant="ghost" onclick={resetAll}>Reset semua</SparkButton>
       </div>
       <small>
-        {writeEnabled ? `Writer aktif · ${sourcePath}` : 'Writer nonaktif. Jalankan dengan SPARK_STUDIO_WRITE_ENABLED=true untuk menyimpan file.'}
+        {writeEnabled ? `Writer aktif · ${sourcePath}` : 'Mode baca-saja. Gunakan Salin JSON untuk meninjau perubahan.'}
       </small>
     </div>
 

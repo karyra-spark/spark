@@ -21,7 +21,7 @@ function walk(dir, files = []) {
     const full = join(fullDir, entry);
     const stat = statSync(full);
     if (stat.isDirectory()) {
-      if (['node_modules', '.svelte-kit', 'build', 'dist'].includes(entry)) continue;
+      if (['node_modules', '.svelte-kit', 'build', 'dist', '.git'].includes(entry)) continue;
       walk(relative(root, full), files);
     } else {
       files.push(relative(root, full));
@@ -30,26 +30,37 @@ function walk(dir, files = []) {
   return files;
 }
 
+function isPassBasedScriptName(name) {
+  // Match internal pass names like audit-pass-68x or audit-pass68x, but never passport.
+  return /^audit:pass(?:-|\d)/i.test(name);
+}
+
+function callsPassBasedAuditFile(command) {
+  // Match audit-pass-*.mjs and audit-pass68*.mjs, but never audit-passport-*.mjs.
+  return /audit-pass(?:-|\d)/i.test(String(command));
+}
+
 if (!exists('package.json')) blockers.push('Missing package.json');
 if (!exists('src/routes/+layout.svelte')) blockers.push('Missing src/routes/+layout.svelte');
 
 if (exists('package.json')) {
   const pkg = JSON.parse(read('package.json'));
   for (const [name, command] of Object.entries(pkg.scripts ?? {})) {
-    if (name.includes('pass')) blockers.push(`package.json script should not use pass-based name: ${name}`);
-    if (String(command).includes('audit-pass')) blockers.push(`package.json script should not call pass-based audit file: ${name}`);
+    if (isPassBasedScriptName(name)) blockers.push(`package.json script should not use pass-based name: ${name}`);
+    if (callsPassBasedAuditFile(command)) blockers.push(`package.json script should not call pass-based audit file: ${name}`);
   }
   const expected = [
     'audit:public-copy',
     'audit:microcopy',
     'audit:journey-copy',
     'audit:learning-flow',
-    'audit:passport',
+    'audit:passport-readiness',
     'audit:css-syntax',
     'audit:hub-topology',
     'audit:desktop-layout',
     'audit:beta-signal',
     'audit:code-clean',
+    'audit:repo-hygiene',
     'audit:all'
   ];
   for (const script of expected) {
@@ -67,10 +78,11 @@ if (exists('src/routes/+layout.svelte')) {
 
 for (const file of walk('src/lib/styles')) {
   if (/src\/lib\/styles\/pass-.*\.css$/.test(file)) blockers.push(`Pass-based stylesheet remains: ${file}`);
+  if (/\.backup-pass|\.before-pass|\.bak$/.test(file)) blockers.push(`Backup stylesheet remains: ${file}`);
 }
 
 for (const file of walk('src/scripts')) {
-  if (/src\/scripts\/audit-pass.*\.mjs$/.test(file)) blockers.push(`Pass-based audit script remains: ${file}`);
+  if (/src\/scripts\/audit-pass(?:-|\d).*\.mjs$/i.test(file)) blockers.push(`Pass-based audit script remains: ${file}`);
   const text = read(file);
   if (text.charCodeAt(0) === 92) blockers.push(`${file} starts with a leading backslash.`);
 }
@@ -99,3 +111,4 @@ if (blockers.length) {
 }
 
 console.log('\nNo hard blockers found.');
+
