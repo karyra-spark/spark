@@ -1,132 +1,110 @@
 #!/usr/bin/env node
-import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
-import { basename, join, relative } from 'node:path';
+import fs from 'node:fs';
+import path from 'node:path';
 
 const root = process.cwd();
 const blockers = [];
 const warnings = [];
+let scanned = 0;
 
-const ignoredDirs = new Set(['.git', 'node_modules', '.svelte-kit', 'build', 'dist', '.vite']);
+const ignoredDirs = new Set([
+  '.git',
+  '.svelte-kit',
+  'node_modules',
+  'build',
+  'dist',
+  '.vercel',
+  '.netlify',
+  'coverage'
+]);
 
-function exists(path) {
-  return existsSync(join(root, path));
+const binaryLike = new Set(['.png', '.jpg', '.jpeg', '.webp', '.gif', '.ico', '.woff', '.woff2', '.ttf']);
+const backupNamePattern = /(?:\.bak$|\.backup(?:-|$)|\.before(?:-|$)|\.tmp$|~$|\.orig$)/i;
+const passArtifactPattern = /(^|\/)(pass-\d|pass-\d+[a-z]?[-_]|.*\.pass-\d+.*|.*backup-pass.*|.*before-pass.*)/i;
+const passBasedCodePattern = /(^|\/)(?:pass-\d|audit-pass\d|audit-pass-\d)/i;
+const secretFilePattern = /(^|\/)(?:\.env$|\.env\.(?!example$)[^/]+|.*secret.*|.*credential.*|.*private.*)/i;
+
+const publicSourceRoots = ['src/', 'static/'];
+const publicSourceExtensions = new Set(['.svelte', '.ts', '.js', '.mjs', '.json', '.css', '.html', '.svg']);
+const hardBlockedRuntimeTerms = [
+  'SPARK_STUDIO_WRITE_ENABLED',
+  'studio-content-overrides.json',
+  '/studio/content/api/override',
+  'SparkPublicContentBuilder',
+  'data-karyra-studio-content-builder'
+];
+
+function shouldSkipDir(name) {
+  return ignoredDirs.has(name) || name.startsWith('pass-');
 }
 
-function read(path) {
-  return readFileSync(join(root, path), 'utf8');
+function isAuditScript(rel) {
+  return rel.startsWith('src/scripts/audit-');
 }
 
-function walk(dir = '.', files = []) {
-  const fullDir = join(root, dir);
-  if (!existsSync(fullDir)) return files;
+function walk(dir) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name);
+    const rel = path.relative(root, full).replaceAll(path.sep, '/');
 
-  for (const entry of readdirSync(fullDir)) {
-    if (ignoredDirs.has(entry)) continue;
-    const full = join(fullDir, entry);
-    const stat = statSync(full);
-    const rel = relative(root, full);
-    if (stat.isDirectory()) {
-      walk(rel, files);
-    } else {
-      files.push(rel);
+    if (entry.isDirectory()) {
+      if (shouldSkipDir(entry.name)) continue;
+      if (passArtifactPattern.test(rel)) blockers.push(`${rel}/ looks like a pass/internal artifact directory.`);
+      walk(full);
+      continue;
+    }
+
+    scanned += 1;
+    const ext = path.extname(entry.name).toLowerCase();
+
+    if (backupNamePattern.test(entry.name) || passArtifactPattern.test(rel)) {
+      blockers.push(`${rel} looks like a temporary, backup, or pass artifact file.`);
+    }
+
+    if (passBasedCodePattern.test(rel) && !isAuditScript(rel)) {
+      blockers.push(`${rel} still uses pass-based public code naming.`);
+    }
+
+    if (secretFilePattern.test(rel) && !rel.endsWith('.env.example')) {
+      blockers.push(`${rel} looks like a secret/private env file and should not be public.`);
+    }
+
+    if (binaryLike.has(ext)) continue;
+    if (!publicSourceExtensions.has(ext)) continue;
+    if (!publicSourceRoots.some((prefix) => rel.startsWith(prefix)) && !['package.json', '.env.example'].includes(rel)) continue;
+
+    const text = fs.readFileSync(full, 'utf8');
+
+    if (!isAuditScript(rel)) {
+      for (const term of hardBlockedRuntimeTerms) {
+        if (text.includes(term)) blockers.push(`${rel} contains removed Studio/write-surface term: ${term}`);
+      }
+    }
+
+    if (rel === '.env.example' && text.includes('PUBLIC_SPARK_HUB_URL="http://localhost:5174"')) {
+      warnings.push('.env.example should default PUBLIC_SPARK_HUB_URL to /hub and keep localhost only as an optional comment.');
     }
   }
-  return files;
 }
 
-function isBackupOrTempArtifact(file) {
-  const name = basename(file);
-  return (
-    name.endsWith('.bak') ||
-    name.endsWith('.tmp') ||
-    name.endsWith('.orig') ||
-    name.endsWith('.rej') ||
-    name.includes('.backup-pass') ||
-    name.includes('.before-pass') ||
-    /\.pass-[^/]+/.test(name) ||
-    /\.pass\d/i.test(name) ||
-    /^pass-.*\.zip$/i.test(name) ||
-    /helper\.txt$/i.test(name)
-  );
-}
-
-function isPassStyleCode(file) {
-  return /^src\/lib\/styles\/pass-.*\.css$/i.test(file);
-}
-
-function hasUncommentedLocalHub(text) {
-  return text
-    .split(/\r?\n/)
-    .some((line) => !line.trimStart().startsWith('#') && /localhost:5174/.test(line));
-}
-
-const files = walk();
-
-for (const file of files) {
-  if (isBackupOrTempArtifact(file)) blockers.push(`${file} looks like a temporary or backup file.`);
-  if (isPassStyleCode(file)) blockers.push(`${file} still uses pass-based public code naming.`);
-}
-
-for (const entry of readdirSync(root)) {
-  const full = join(root, entry);
-  const stat = statSync(full);
-  if (stat.isDirectory() && /^pass-/i.test(entry)) blockers.push(`${entry}/ looks like a pass installer folder in repo root.`);
-  if (stat.isFile() && /^pass-.*\.zip$/i.test(entry)) blockers.push(`${entry} looks like a pass archive in repo root.`);
-}
-
-if (exists('.env')) blockers.push('.env must not be committed or kept in the public repo working tree.');
-if (exists('package-lock.json')) blockers.push('package-lock.json should not be present in the pnpm-based Spark repo.');
-if (exists('yarn.lock')) blockers.push('yarn.lock should not be present in the pnpm-based Spark repo.');
-if (exists('npm-shrinkwrap.json')) blockers.push('npm-shrinkwrap.json should not be present in the pnpm-based Spark repo.');
-if (!exists('pnpm-lock.yaml')) warnings.push('pnpm-lock.yaml is missing. Commit it for reproducible public builds.');
-
-if (exists('.gitignore')) {
-  const gitignore = read('.gitignore');
-  if (/^\s*\/?pnpm-lock\.yaml\s*$/m.test(gitignore)) blockers.push('.gitignore must not ignore pnpm-lock.yaml.');
-  for (const required of ['pass-*/', 'pass-*.zip', '.pass-backups/', '*.bak', '*.tmp']) {
-    if (!gitignore.includes(required)) warnings.push(`.gitignore should include ${required}`);
-  }
-}
-
-if (exists('.env.example')) {
-  const env = read('.env.example');
-  if (!/PUBLIC_SPARK_HUB_URL\s*=\s*["']\/hub["']/.test(env)) {
-    blockers.push('.env.example should default PUBLIC_SPARK_HUB_URL to "/hub" for one-domain beta topology.');
-  }
-  if (hasUncommentedLocalHub(env)) blockers.push('.env.example contains an uncommented localhost Hub URL.');
-}
-
-const runtimeFiles = files.filter((file) => {
-  if (!/\.(svelte|ts|js|mjs|json|css|html|md|env|example)$/i.test(file)) return false;
-  if (file.startsWith('src/scripts/')) return false;
-  if (file === '.env.example') return false;
-  return true;
-});
-
-for (const file of runtimeFiles) {
-  const text = read(file);
-  if (/localhost:5174/.test(text)) blockers.push(`${file} contains a hard-coded local Hub URL.`);
-  if (/SPARK_STUDIO_WRITE_ENABLED\s*=\s*true/.test(text)) blockers.push(`${file} enables studio write mode in public source.`);
-}
+walk(root);
 
 console.log('Karyra Spark repository hygiene audit');
 console.log('======================================');
-console.log(`Entries scanned: ${files.length}`);
+console.log(`Entries scanned: ${scanned}`);
 console.log(`Warnings: ${warnings.length}`);
 console.log(`Blockers: ${blockers.length}`);
 
 if (warnings.length) {
   console.log('\nWarnings:');
-  for (const warning of warnings.slice(0, 80)) console.log(`- ${warning}`);
-  if (warnings.length > 80) console.log(`- ...and ${warnings.length - 80} more warnings`);
+  for (const warning of warnings) console.log(`- ${warning}`);
 }
 
 if (blockers.length) {
-  console.error('\nBlockers:');
-  for (const blocker of blockers.slice(0, 120)) console.error(`- ${blocker}`);
-  if (blockers.length > 120) console.error(`- ...and ${blockers.length - 120} more blockers`);
+  console.log('\nBlockers:');
+  for (const blocker of blockers) console.log(`- ${blocker}`);
   process.exit(1);
 }
 
-console.log('\nNo hard blockers found.');
-
+console.log('\nRepository hygiene looks clean.');

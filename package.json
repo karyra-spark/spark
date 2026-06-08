@@ -20,10 +20,11 @@
     "audit:desktop-layout": "node src/scripts/audit-desktop-layout.mjs",
     "audit:beta-signal": "node src/scripts/audit-beta-signal.mjs",
     "audit:code-clean": "node src/scripts/audit-code-cleanliness.mjs",
-    "audit:all": "pnpm run audit:code-clean && pnpm run audit:public-copy && pnpm run audit:microcopy && pnpm run audit:journey-copy && pnpm run audit:learning-flow && pnpm run audit:passport-readiness && pnpm run audit:css-syntax && pnpm run audit:hub-topology && pnpm run audit:desktop-layout && pnpm run audit:beta-signal && pnpm run audit:repo-hygiene",
+    "audit:all": "pnpm run audit:code-clean && pnpm run audit:public-copy && pnpm run audit:microcopy && pnpm run audit:journey-copy && pnpm run audit:learning-flow && pnpm run audit:passport-readiness && pnpm run audit:css-syntax && pnpm run audit:hub-topology && pnpm run audit:desktop-layout && pnpm run audit:beta-signal && pnpm run audit:public-surface && pnpm run audit:repo-hygiene",
     "audit:public-repo": "node src/scripts/audit-repository-hygiene.mjs",
     "audit:repo-hygiene": "node src/scripts/audit-repository-hygiene.mjs",
-    "audit:passport-readiness": "node src/scripts/audit-passport-readiness.mjs"
+    "audit:passport-readiness": "node src/scripts/audit-passport-readiness.mjs",
+    "audit:public-surface": "node src/scripts/audit-public-surface.mjs"
   },
   "dependencies": {
     "@lucide/svelte": "latest",
