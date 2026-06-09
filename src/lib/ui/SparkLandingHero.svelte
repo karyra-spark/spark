@@ -42,7 +42,7 @@
       <a href="/core"><SparkIcon name="book-open" size={16} /><strong>Core Beginner</strong><small>Fondasi</small></a>
       <a href="/lab"><SparkIcon name="flask-conical" size={16} /><strong>Praktik Lab</strong><small>Praktik</small></a>
       <a href="/profile"><SparkIcon name="badge" size={16} /><strong>Passport</strong><small>Kesiapan</small></a>
-      <a href="/hub"><SparkIcon name="compass" size={16} /><strong>Hub Spark</strong><small>Jelajah</small></a>
+      <a href="/hub/" data-sveltekit-reload><SparkIcon name="compass" size={16} /><strong>Hub Spark</strong><small>Jelajah</small></a>
     </div>
 
     <div class="spark-home-preview-note">

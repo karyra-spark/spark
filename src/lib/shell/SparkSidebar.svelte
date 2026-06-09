@@ -32,7 +32,7 @@
     </div>
   </a>
 
-  <a class="spark-sidebar-hub" href="/hub">
+  <a class="spark-sidebar-hub" href="/hub/" data-sveltekit-reload>
     <span><SparkIcon name="compass" size={18} /></span>
     <span>
       <strong>Jelajahi Hub</strong>
