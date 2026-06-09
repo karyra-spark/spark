@@ -75,11 +75,6 @@ export type HubResource = {
   url: string;
 };
 
-const defaultBody = [
-  'Spark memakai pendekatan text-first agar pengguna dapat membaca pelan-pelan, kembali ke bagian penting, dan memahami konsep sebelum praktik.',
-  'Untuk pengguna pemula, istilah teknis dijembatani dengan contoh sederhana. Untuk pengguna yang sudah punya dasar, materi tetap menyediakan konteks agar praktik tidak dilakukan secara buta.',
-  'Setelah memahami inti pelajaran, pengguna menuntaskan checkpoint kecil agar progress tidak hanya berupa klik tombol.'
-];
 
 export const sparkModules: SparkModule[] = [
   {
@@ -100,9 +95,10 @@ export const sparkModules: SparkModule[] = [
         modeHint: ['beginner', 'guided'],
         checkpoint: 'Pengguna bisa menjelaskan masalah trust dengan bahasa sederhana.',
         body: [
-          'Bayangkan ada catatan iuran komunitas yang hanya disimpan oleh satu orang. Jika catatan itu hilang, rusak, atau diubah sepihak, anggota lain sulit membuktikan kebenarannya.',
-          'Blockchain muncul sebagai cara membuat catatan digital bersama yang bisa diverifikasi banyak pihak. Fokus awalnya bukan harga token, melainkan kepercayaan digital.',
-          'Di Spark, blockchain dijelaskan sebagai fondasi sebelum membahas cryptocurrency, wallet, Web3, dan Starknet.'
+          'Bayangkan ada catatan iuran komunitas yang hanya disimpan oleh satu orang. Jika catatan itu hilang, rusak, atau diubah sepihak, anggota lain sulit membuktikan versi mana yang benar.',
+          'Blockchain lahir dari masalah kepercayaan digital seperti ini. Ia membuat catatan bersama yang dapat diperiksa banyak pihak, sehingga perubahan tidak hanya bergantung pada satu penjaga data.',
+          'Untuk pemula, bagian terpenting bukan harga token atau janji cepat kaya. Bagian terpenting adalah memahami bahwa blockchain membantu orang mengecek asal-usul, urutan, dan keutuhan sebuah catatan.',
+          'Di Spark, blockchain menjadi fondasi sebelum membahas cryptocurrency, wallet, Web3, dan Starknet. Urutannya sengaja dibuat pelan agar pengguna tidak langsung masuk ke risiko teknis tanpa memahami alasan dasarnya.'
         ],
         checkpointQuestion: 'Apa masalah utama yang ingin dijawab oleh blockchain?',
         checkpointOptions: [
@@ -123,7 +119,12 @@ export const sparkModules: SparkModule[] = [
         estimatedMinutes: 10,
         modeHint: ['beginner', 'guided'],
         checkpoint: 'Pengguna memahami kenapa data bersama perlu disepakati.',
-        body: defaultBody,
+        body: [
+          'Ledger bisa dibayangkan sebagai buku catatan. Bedanya, dalam blockchain catatan itu tidak hanya disimpan di satu tempat, melainkan direplikasi dan diperiksa oleh banyak peserta jaringan.',
+          'Ketika banyak pihak memegang salinan catatan yang sama, perubahan sepihak menjadi lebih mudah terdeteksi. Jaringan perlu menyepakati urutan data agar semua pihak punya gambaran yang konsisten.',
+          'Transparan bukan berarti semua identitas pribadi terbuka. Yang penting bagi pemula adalah memahami bahwa aktivitas di jaringan biasanya meninggalkan jejak yang dapat diperiksa, sehingga kehati-hatian sangat penting.',
+          'Sebelum masuk ke wallet atau aplikasi, pengguna perlu tahu bahwa setiap aksi onchain bukan sekadar klik biasa. Aksi itu masuk ke catatan bersama dan dapat berdampak pada akun, aset, atau reputasi digital.'
+        ],
         checkpointQuestion: 'Kenapa catatan bersama lebih kuat daripada catatan satu pihak?',
         checkpointOptions: [
           { id: 'shared', label: 'Karena banyak pihak bisa ikut memeriksa dan menyepakati catatan', correct: true, feedback: 'Benar. Verifikasi bersama membuat manipulasi lebih sulit.' },
@@ -153,7 +154,12 @@ export const sparkModules: SparkModule[] = [
         estimatedMinutes: 9,
         modeHint: ['beginner', 'guided'],
         checkpoint: 'Pengguna bisa membedakan blockchain dan token.',
-        body: defaultBody,
+        body: [
+          'Token adalah unit digital yang hidup di atas jaringan blockchain. Token bisa mewakili nilai, akses, hak, poin, biaya jaringan, atau fungsi tertentu di sebuah aplikasi.',
+          'Spark tidak memperkenalkan token sebagai ajakan trading. Untuk pemula, token lebih aman dipahami sebagai bagian dari cara aplikasi blockchain mencatat kepemilikan, izin, atau aktivitas.',
+          'Ada token yang dipakai untuk membayar biaya jaringan, ada token yang mewakili aset, dan ada token yang dipakai sebagai tanda partisipasi. Fungsi token selalu perlu dibaca dari konteksnya, bukan dari nama atau hype-nya saja.',
+          'Sebelum menyentuh token sungguhan, pengguna perlu belajar membaca risiko: siapa penerbitnya, untuk apa token dipakai, apakah perlu signature, dan apakah aksi itu memakai testnet atau aset utama.'
+        ],
         checkpointQuestion: 'Dalam Spark, token sebaiknya dipahami sebagai apa terlebih dahulu?',
         checkpointOptions: [
           { id: 'representation', label: 'Representasi nilai, akses, atau utilitas di jaringan', correct: true, feedback: 'Benar. Kita pahami token secara fungsional dulu.' },
@@ -183,7 +189,12 @@ export const sparkModules: SparkModule[] = [
         estimatedMinutes: 12,
         modeHint: ['beginner', 'guided'],
         checkpoint: 'Pengguna tahu kenapa seed phrase tidak boleh dibagikan.',
-        body: defaultBody,
+        body: [
+          'Wallet bukan rekening bank biasa. Wallet adalah alat untuk mengelola akses ke akun blockchain, sedangkan kendali utamanya bergantung pada kunci rahasia seperti seed phrase atau private key.',
+          'Jika seseorang mendapatkan seed phrase, ia dapat mengambil alih akses. Karena itu seed phrase tidak boleh dikirim lewat chat, disimpan sebagai screenshot, dimasukkan ke form sembarang, atau dibagikan kepada orang yang mengaku sebagai admin.',
+          'Connect wallet, approve, dan sign adalah tiga pengalaman yang sering terlihat mirip oleh pemula, padahal risikonya berbeda. Connect biasanya mengenalkan alamat, sedangkan approve atau sign bisa memberi izin atau menyetujui aksi tertentu.',
+          'Di Spark, pengguna dilatih mengenali bahasa risiko sebelum memakai wallet sungguhan. Tujuannya bukan menakut-nakuti, tetapi membangun kebiasaan aman: baca konteks, cek tujuan aksi, dan jangan tanda tangan jika belum paham.'
+        ],
         checkpointQuestion: 'Apa prinsip keamanan paling penting saat memakai wallet?',
         checkpointOptions: [
           { id: 'seed', label: 'Jangan pernah membagikan seed phrase/private key', correct: true, feedback: 'Benar. Ini prinsip utama sebelum praktik apa pun.' },
@@ -214,7 +225,12 @@ export const sparkModules: SparkModule[] = [
         estimatedMinutes: 10,
         modeHint: ['guided', 'explorer'],
         checkpoint: 'Pengguna memahami connect wallet tidak sama dengan mengirim aset.',
-        body: defaultBody,
+        body: [
+          'Aplikasi Web3 berbeda dari aplikasi biasa karena sebagian interaksinya dapat terhubung dengan wallet dan jaringan blockchain. Pengguna tidak hanya membuat akun, tetapi membawa alamat wallet sebagai identitas atau akses.',
+          'Connect wallet bukan otomatis mengirim aset. Namun connect tetap perlu dipahami karena aplikasi bisa membaca alamat publik dan menampilkan fitur berdasarkan alamat itu.',
+          'Interaksi yang lebih serius biasanya meminta signature atau transaksi. Di tahap ini pengguna harus membaca pesan, memahami tujuan aksi, dan memastikan berada di situs yang benar sebelum menyetujui apa pun.',
+          'Spark menempatkan Web3 setelah wallet safety agar pengguna tidak hanya tahu tombol mana yang diklik, tetapi juga tahu kapan harus berhenti, bertanya, atau membatalkan aksi yang terasa tidak jelas.'
+        ],
         checkpointQuestion: 'Apa arti connect wallet secara sederhana?',
         checkpointOptions: [
           { id: 'identity', label: 'Memberi aplikasi cara mengenali alamat wallet kita', correct: true, feedback: 'Benar. Connect wallet bukan otomatis mengirim aset.' },
@@ -245,7 +261,12 @@ export const sparkModules: SparkModule[] = [
         estimatedMinutes: 12,
         modeHint: ['guided', 'explorer'],
         checkpoint: 'Pengguna memahami kenapa Spark membawa mereka ke Starknet secara bertahap.',
-        body: defaultBody,
+        body: [
+          'Starknet adalah jaringan Layer 2 yang membantu aplikasi blockchain berjalan lebih scalable dengan tetap terhubung pada keamanan Ethereum melalui bukti kriptografi. Untuk pemula, cukup pahami dulu bahwa Starknet adalah jalur ekosistem yang membutuhkan kesiapan sebelum praktik.',
+          'Di Starknet, akun pengguna berbentuk smart contract account. Ini membuka ruang untuk account abstraction, yaitu akun yang dapat punya logika lebih fleksibel dibanding model wallet sederhana.',
+          'Fleksibilitas ini menarik, tetapi pemula tetap perlu disiplin membaca risiko. Wallet, signature, transaksi, biaya jaringan, testnet, dan explorer tetap harus dipahami secara bertahap.',
+          'Spark mengenalkan Starknet setelah fondasi blockchain, token, wallet, dan Web3 karena tujuan utamanya adalah readiness. Pengguna diarahkan untuk memahami dulu, berlatih aman, lalu mengeksplorasi Hub dan ekosistem Starknet dengan lebih percaya diri.'
+        ],
         checkpointQuestion: 'Kenapa Spark mengenalkan Starknet secara bertahap?',
         checkpointOptions: [
           { id: 'safe', label: 'Agar pengguna punya fondasi sebelum praktik teknis', correct: true, feedback: 'Benar. Spark mengutamakan readiness sebelum eksplorasi teknis.' },
@@ -265,7 +286,12 @@ export const sparkModules: SparkModule[] = [
         estimatedMinutes: 11,
         modeHint: ['explorer'],
         checkpoint: 'Pengguna tahu bahwa Cairo adalah bagian teknis yang bisa dipelajari setelah fondasi siap.',
-        body: defaultBody,
+        body: [
+          'Cairo adalah bahasa dan ekosistem pengembangan yang digunakan dalam dunia Starknet. Pemula tidak harus langsung menulis kode, tetapi penting mengenal bahwa aplikasi Starknet dibangun dengan alat teknis yang bisa dipelajari bertahap.',
+          'Cara paling aman untuk mengenalkan Cairo kepada non-teknikal learner adalah sebagai peta, bukan ujian. Mereka cukup tahu bahwa smart contract berisi aturan, fungsi, dan data yang menentukan bagaimana sebuah aplikasi berjalan.',
+          'Setelah pengguna lebih siap, Cairo dapat menjadi pintu menuju jalur builder: membaca contoh kode, memahami contract, mencoba tool seperti Scarb atau Starknet Foundry, lalu masuk ke latihan teknis yang lebih serius.',
+          'Di Spark, lesson Cairo ini berfungsi sebagai jembatan. Ia memberi konteks bahwa Starknet bukan hanya tempat memakai aplikasi, tetapi juga ruang untuk membangun, berkontribusi, dan memahami teknologi secara lebih dalam.'
+        ],
         checkpointQuestion: 'Bagaimana pemula sebaiknya melihat Cairo?',
         checkpointOptions: [
           { id: 'bridge', label: 'Sebagai tahap teknis lanjutan setelah fondasi siap', correct: true, feedback: 'Benar. Cairo tidak harus muncul sebelum pengguna siap.' },

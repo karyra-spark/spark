@@ -14,11 +14,11 @@ const UrlOrPathSchema = z.string().refine(
 );
 
 const ClientEnvSchema = z.object({
-  PUBLIC_SPARK_API_URL: z.string().url().optional().default('http://localhost:8787'),
+  PUBLIC_SPARK_API_URL: UrlOrPathSchema.optional().default('/api'),
   PUBLIC_SPARK_HUB_URL: UrlOrPathSchema.optional().default('/hub'),
-  PUBLIC_SPARK_APP_URL: z.string().url().optional().default('http://localhost:5173'),
+  PUBLIC_SPARK_APP_URL: UrlOrPathSchema.optional().default('/'),
   PUBLIC_SPARK_APP_NAME: z.string().optional().default('Karyra Spark'),
-  PUBLIC_SPARK_MODE: z.enum(['local', 'preview', 'production']).optional().default('local')
+  PUBLIC_SPARK_MODE: z.enum(['local', 'preview', 'production']).optional().default('production')
 });
 
 export const sparkEnv = ClientEnvSchema.parse({

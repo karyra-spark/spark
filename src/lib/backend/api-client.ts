@@ -1,13 +1,27 @@
 import type { SparkApiHealth } from './api-contract';
 
-const DEFAULT_API_BASE_URL = 'http://127.0.0.1:8787';
+const DEFAULT_API_BASE_PATH = '/api';
 
-export const sparkApiBaseUrl =
-  (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SPARK_API_BASE_URL) || DEFAULT_API_BASE_URL;
+function normalizeApiBaseUrl(value: string | undefined) {
+  const candidate = value?.trim();
+  if (!candidate) return DEFAULT_API_BASE_PATH;
+  if (candidate === '/') return '';
+  return candidate.replace(/\/$/, '');
+}
+
+function joinApiPath(baseUrl: string, path: string) {
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  if (!baseUrl) return normalizedPath;
+  if (baseUrl.startsWith('/')) return `${baseUrl}${normalizedPath}`.replace(/\/+/g, '/');
+  return `${baseUrl}${normalizedPath}`;
+}
+
+export const sparkApiBaseUrl = normalizeApiBaseUrl(
+  import.meta.env.VITE_SPARK_API_BASE_URL || import.meta.env.PUBLIC_SPARK_API_URL
+);
 
 export function sparkApiUrl(path: string) {
-  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
-  return `${sparkApiBaseUrl}${normalizedPath}`;
+  return joinApiPath(sparkApiBaseUrl, path);
 }
 
 export async function fetchSparkApiHealth(fetcher: typeof fetch = fetch): Promise<SparkApiHealth> {

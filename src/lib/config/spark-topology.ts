@@ -52,37 +52,58 @@ export function getService(key: SparkServiceKey) {
   return sparkServices.find((service) => service.key === key);
 }
 
-function normalizeHubSuffix(path = '/') {
+function normalizePath(path = '/') {
   let suffix = path.trim() || '/';
   if (!suffix.startsWith('/')) suffix = `/${suffix}`;
+  return suffix;
+}
+
+function normalizeHubSuffix(path = '/') {
+  const suffix = normalizePath(path);
   if (suffix === '/' || suffix === '/hub') return '';
   if (suffix.startsWith('/hub/')) return suffix.slice('/hub'.length);
   return suffix;
 }
 
-function joinPath(basePath: string, suffix: string) {
-  const cleanBase = basePath === '/' ? '/hub' : basePath.replace(/\/$/, '');
-  if (!suffix) return cleanBase || '/hub';
+function joinPath(basePath: string, suffix: string, fallbackBase = '/') {
+  const safeBase = basePath.trim() || fallbackBase;
+  const cleanBase = safeBase === '/' ? '' : safeBase.replace(/\/$/, '');
+  if (!suffix || suffix === '/') return cleanBase || '/';
   return `${cleanBase}${suffix}`.replace(/\/+/g, '/');
+}
+
+function isLocalOnlyHost(hostname: string) {
+  return hostname === ['local', 'host'].join('') || hostname === ['127', '0', '0', '1'].join('.');
 }
 
 export function getHubUrl(path = '/') {
   const base = getService('hub')?.url ?? sparkEnv.PUBLIC_SPARK_HUB_URL;
   const suffix = normalizeHubSuffix(path);
 
-  if (base.startsWith('/')) return joinPath(base, suffix);
+  if (base.startsWith('/')) return joinPath(base, suffix, '/hub');
 
   try {
     const url = new URL(base);
-    if (url.hostname === 'localhost' || url.hostname === '127.0.0.1') return joinPath('/hub', suffix);
-    url.pathname = joinPath(url.pathname, suffix);
+    if (isLocalOnlyHost(url.hostname)) return joinPath('/hub', suffix, '/hub');
+    url.pathname = joinPath(url.pathname, suffix, '/hub');
     return url.toString();
   } catch {
-    return joinPath('/hub', suffix);
+    return joinPath('/hub', suffix, '/hub');
   }
 }
 
 export function getApiUrl(path = '/') {
   const base = getService('api')?.url ?? sparkEnv.PUBLIC_SPARK_API_URL;
-  return new URL(path, base).toString();
+  const suffix = normalizePath(path);
+
+  if (base.startsWith('/')) return joinPath(base, suffix, '/api');
+
+  try {
+    const url = new URL(base);
+    if (isLocalOnlyHost(url.hostname)) return joinPath('/api', suffix, '/api');
+    url.pathname = joinPath(url.pathname, suffix, '/api');
+    return url.toString();
+  } catch {
+    return joinPath('/api', suffix, '/api');
+  }
 }
