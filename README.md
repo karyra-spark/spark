@@ -99,6 +99,13 @@ Each stage is unlocked only after completing the previous level's exam with a â‰
 
 ---
 
+## Public docs
+
+- [Local Community Signal Summary](docs/LOCAL_COMMUNITY_SIGNAL_SUMMARY.md)
+- [Public Evidence Checklist](docs/PUBLIC_EVIDENCE_CHECKLIST.md)
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
