@@ -91,6 +91,14 @@ Each stage is unlocked only after completing the previous level's exam with a â‰
 
 ---
 
+## Technical design docs
+
+- [Participation Layer Technical Specification](docs/PARTICIPATION_LAYER_SPEC.md)
+- [Proof Ledger Model](docs/PROOF_LEDGER_MODEL.md)
+- [Readiness Passport Flow](docs/READINESS_PASSPORT_FLOW.md)
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
