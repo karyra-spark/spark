@@ -1,4 +1,5 @@
 <script lang="ts">
+	// PASS SUBMISSION-02: Passport Evidence Trail public learner view.
   import { onMount } from 'svelte';
   import SparkButton from './SparkButton.svelte';
   import SparkTrustBadge from './SparkTrustBadge.svelte';
@@ -72,6 +73,65 @@
     if (value.includes('evidence') && value.includes('root')) return 'Kumpulkan bukti belajar dari aktivitasmu';
     return value;
   }
+
+	function eventSourceLabel(event: ProofEvent) {
+		const track = event.track?.toLowerCase() ?? '';
+		const type = event.event_type.toLowerCase();
+		const source = event.source_table?.toLowerCase() ?? '';
+
+		if (track.includes('core') || type.includes('learning') || type.includes('lesson') || source.includes('lesson')) {
+			return 'Readiness Education';
+		}
+
+		if (track.includes('lab') || type.includes('practice') || type.includes('safety') || source.includes('lab')) {
+			return 'Safe Practice Lab';
+		}
+
+		if (type.includes('passport') || type.includes('readiness')) {
+			return 'Readiness Passport';
+		}
+
+		if (track.includes('community') || type.includes('participation') || source.includes('community')) {
+			return 'Community Participation';
+		}
+
+		return 'Spark Proof Ledger';
+	}
+
+	function eventTimeLabel(event: ProofEvent) {
+		if (!event.created_at) return 'Waktu mengikuti catatan backend';
+
+		const parsed = new Date(event.created_at);
+		if (Number.isNaN(parsed.getTime())) return 'Waktu mengikuti catatan backend';
+
+		return new Intl.DateTimeFormat('id-ID', {
+			dateStyle: 'medium',
+			timeStyle: 'short'
+		}).format(parsed);
+	}
+
+	function eventSafetyNote(event: ProofEvent) {
+		const source = eventSourceLabel(event);
+
+		if (source === 'Safe Practice Lab') {
+			return 'Praktik ini dicatat sebagai simulasi aman: tanpa wallet connect, tanda tangan, transaksi, seed phrase, atau aset nyata.';
+		}
+
+		if (source === 'Readiness Education') {
+			return 'Bukti belajar ini menunjukkan progress materi. Jawaban mentah dan detail sensitif tidak ditampilkan ke publik.';
+		}
+
+		if (source === 'Community Participation') {
+			return 'Catatan partisipasi disiapkan untuk alur verifikasi fasilitator, tetapi tetap off-chain pada tahap Seed.';
+		}
+
+		if (source === 'Readiness Passport') {
+			return 'Passport membaca kumpulan bukti yang sudah tercatat dan merangkum kesiapan tanpa menerbitkan data pribadi ke jaringan publik.';
+		}
+
+		return 'Catatan ini adalah fondasi Proof Ledger off-chain untuk menjelaskan kenapa status Passport berubah.';
+	}
+
 
   async function loadPassportReadModel() {
     loading = true;
@@ -407,6 +467,15 @@
     margin-top: 3px;
     color: var(--spark-muted);
   }
+
+	.passport-backend-events-head {
+		align-items: flex-start;
+	}
+
+	.passport-backend-event-list article {
+		align-items: flex-start;
+	}
+
 
   @keyframes passport-backend-spin {
     to {

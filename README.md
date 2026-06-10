@@ -187,8 +187,8 @@ cp .env.example .env
 |---|---|---|
 | `PUBLIC_SPARK_APP_NAME` | `Karyra Spark` | Display name of the application |
 | `PUBLIC_SPARK_MODE` | `beta` | App mode (`beta` or `production`) |
-| `PUBLIC_SPARK_APP_URL` | `http://localhost:5173` | Frontend origin URL |
-| `PUBLIC_SPARK_API_URL` | `http://localhost:8787` | Backend API base URL |
+| `PUBLIC_SPARK_APP_URL` | `/` | Frontend origin URL |
+| `PUBLIC_SPARK_API_URL` | `/api` | Backend API base URL |
 | `PUBLIC_SPARK_HUB_URL` | `/hub` | Hub sub-path or separate origin (e.g. `http://localhost:5174`) |
 | `ORIGIN` | _(deployment origin)_ | Required by the Node adapter in production |
 
