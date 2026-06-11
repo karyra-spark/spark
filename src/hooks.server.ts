@@ -6,6 +6,13 @@ export const handle: Handle = async ({ event, resolve }) => {
   const response = await resolve(event);
   const pathname = event.url.pathname;
 
+  if (pathname.startsWith('/admin')) {
+    response.headers.set('Cache-Control', 'private, no-store, max-age=0');
+    response.headers.set('Referrer-Policy', 'same-origin');
+    response.headers.set('X-Frame-Options', 'DENY');
+    return response;
+  }
+
   if (STATIC_ASSET_PATTERN.test(pathname) || pathname.startsWith('/assets/')) {
     response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
     return response;
