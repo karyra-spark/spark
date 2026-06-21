@@ -311,11 +311,6 @@ Please keep commits focused and descriptive. The audit scripts in `src/scripts/`
 
 ---
 
-## License
-
-This repository does not yet include an explicit license file. Until one is added, all rights remain with the contributors. If you intend to reuse or fork this project, please open an issue to discuss terms.
-
----
 
 *Karyra Spark — education and readiness platform, not financial advice.*
 *© 2026 Karyra Spark*
